@@ -1,21 +1,20 @@
 [gd_scene load_steps=8 format=3 uid="uid://dr4ui5x1ehput"]
 
-[ext_resource type="Texture2D" uid="uid://cn4q5hg2idcov" path="res://Assets/Sprites/Blank Tile.png" id="1_53cvu"]
+[ext_resource type="Texture2D" uid="uid://ctn0a51odma7r" path="res://Assets/Sprites/slab.png" id="1_jsiv7"]
 [ext_resource type="PackedScene" uid="uid://baw2nycjbf8fe" path="res://Scenes/player.tscn" id="2_cukf0"]
 [ext_resource type="Script" path="res://Scripts/CharacterMarker.gd" id="3_11p4n"]
 [ext_resource type="Texture2D" uid="uid://lg55tqdqwjba" path="res://Assets/Sprites/Character Marker.png" id="3_kwiu8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhfdr"]
-texture = ExtResource("1_53cvu")
+texture = ExtResource("1_jsiv7")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_8qamb"]
-tile_shape = 1
 tile_offset_axis = 1
-tile_size = Vector2i(32, 16)
+tile_size = Vector2i(32, 22)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qhfdr")
 
@@ -37,7 +36,7 @@ layer_0/tile_data = PackedInt32Array(131083, 0, 0, 131082, 0, 0, 65546, 0, 0, 65
 
 [node name="CharacterMarker" type="CharacterBody2D" parent="."]
 texture_filter = 1
-position = Vector2(100, 100)
+position = Vector2(100, 125)
 scale = Vector2(2, 2)
 script = ExtResource("3_11p4n")
 
@@ -54,5 +53,5 @@ shape = SubResource("CapsuleShape2D_c8y8s")
 disabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_cukf0")]
-position = Vector2(100, 100)
+position = Vector2(100, 125)
 scale = Vector2(0.75, 0.75)

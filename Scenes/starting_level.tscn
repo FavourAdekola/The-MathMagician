@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://l0ivw6xefy5i"]
+
+[ext_resource type="Texture2D" uid="uid://dm6wp5qr0pj5f" path="res://Assets/Sprites/Castle Floor.png" id="1_7o7ja"]
+[ext_resource type="Texture2D" uid="uid://dwmh2bohjoqhh" path="res://Assets/Sprites/Castle Wall.png" id="2_eenn1"]
+[ext_resource type="Script" path="res://Scripts/CharacterMarker.gd" id="3_eq5be"]
+[ext_resource type="Texture2D" uid="uid://lg55tqdqwjba" path="res://Assets/Sprites/Character Marker.png" id="4_ofixa"]
+[ext_resource type="PackedScene" uid="uid://baw2nycjbf8fe" path="res://Scenes/player.tscn" id="5_ibpnf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pey2u"]
+radius = 1.0
+height = 23.0
+
+[node name="Starting Level" type="Node2D"]
+
+[node name="Main Room" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
+
+[node name="CastleFloor" type="Sprite2D" parent="Main Room"]
+texture_filter = 1
+texture = ExtResource("1_7o7ja")
+centered = false
+
+[node name="CastleWall" type="Sprite2D" parent="Main Room"]
+texture_filter = 1
+position = Vector2(0, 285)
+texture = ExtResource("2_eenn1")
+centered = false
+
+[node name="CharacterMarker" type="CharacterBody2D" parent="."]
+texture_filter = 1
+position = Vector2(361, 838)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("3_eq5be")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterMarker"]
+texture_filter = 1
+position = Vector2(-0.5, 6)
+texture = ExtResource("4_ofixa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterMarker"]
+visible = false
+position = Vector2(0, 11)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pey2u")
+disabled = true
+
+[node name="Player" parent="." instance=ExtResource("5_ibpnf")]
+position = Vector2(361, 838)
+scale = Vector2(0.5, 0.5)
