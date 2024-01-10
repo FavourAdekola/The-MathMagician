@@ -1,0 +1,135 @@
+[gd_scene load_steps=18 format=3 uid="uid://bklpyxfwqfpdy"]
+
+[ext_resource type="Texture2D" uid="uid://dmlmi1h6tkaha" path="res://Assets/Sprites/Open Book.png" id="1_50wj6"]
+[ext_resource type="Texture2D" uid="uid://cqo5aylbp33ae" path="res://Assets/Sprites/NumberOne.png" id="2_vfgf0"]
+[ext_resource type="Texture2D" uid="uid://ocmi8b85xe5n" path="res://Assets/Sprites/NumberZero.png" id="3_go5jv"]
+[ext_resource type="Texture2D" uid="uid://bi80s2rtidnar" path="res://Assets/Sprites/NumberTwo.png" id="4_flsoy"]
+[ext_resource type="Texture2D" uid="uid://cc05jaqagblac" path="res://Assets/Sprites/NumberThree.png" id="5_w45by"]
+[ext_resource type="Texture2D" uid="uid://d2y7i7x7gqdbr" path="res://Assets/Sprites/NumberFour.png" id="6_t3iuo"]
+[ext_resource type="Texture2D" uid="uid://0wfkq5wx4gn0" path="res://Assets/Sprites/NumberFive.png" id="7_81anc"]
+[ext_resource type="Texture2D" uid="uid://dwntt7l271iu5" path="res://Assets/Sprites/NumberSix.png" id="8_g6p1p"]
+[ext_resource type="Texture2D" uid="uid://e0irv2cuytfg" path="res://Assets/Sprites/NumberSeven.png" id="9_w08ay"]
+[ext_resource type="Texture2D" uid="uid://q7aceoundkpe" path="res://Assets/Sprites/NumberEight.png" id="10_qqrf5"]
+[ext_resource type="Texture2D" uid="uid://d068d8pxe5ulp" path="res://Assets/Sprites/NumberNine.png" id="11_pb2yx"]
+[ext_resource type="Texture2D" uid="uid://cdej7r865lkoj" path="res://Assets/Sprites/MultiplicationSign.png" id="12_86bnw"]
+[ext_resource type="Texture2D" uid="uid://b8yontdancgf4" path="res://Assets/Sprites/DivisionSign.png" id="13_5rq3a"]
+[ext_resource type="Texture2D" uid="uid://d0k7khxwenv7r" path="res://Assets/Sprites/AdditionSign.png" id="14_j4g36"]
+[ext_resource type="Texture2D" uid="uid://cxlfnxe3qh78h" path="res://Assets/Sprites/SubtractionSign.png" id="15_kufni"]
+[ext_resource type="Texture2D" uid="uid://pnq4116d3nkm" path="res://Assets/Sprites/Key.png" id="16_hcjod"]
+[ext_resource type="Texture2D" uid="uid://ctn0a51odma7r" path="res://Assets/Sprites/slab.png" id="17_ncn8t"]
+
+[node name="Panel" type="Panel"]
+offset_right = 1152.0
+offset_bottom = 647.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(600, 450)
+scale = Vector2(15, 10)
+texture = ExtResource("1_50wj6")
+
+[node name="Numbers" type="Node2D" parent="."]
+position = Vector2(607, 426)
+scale = Vector2(25, 18.75)
+
+[node name="NumberOne" type="Sprite2D" parent="Numbers"]
+texture_filter = 1
+position = Vector2(2.35, -0.6)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("2_vfgf0")
+
+[node name="NumberZero" type="Sprite2D" parent="Numbers"]
+texture_filter = 1
+position = Vector2(4, 6.45)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("3_go5jv")
+
+[node name="NumberTwo" type="Sprite2D" parent="Numbers"]
+texture_filter = 1
+position = Vector2(4, -0.6)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("4_flsoy")
+
+[node name="NumberThree" type="Sprite2D" parent="Numbers"]
+texture_filter = 1
+position = Vector2(5.65, -0.6)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("5_w45by")
+
+[node name="NumberFour" type="Sprite2D" parent="Numbers"]
+texture_filter = 1
+position = Vector2(2.35, 1.75)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("6_t3iuo")
+
+[node name="NumberFive" type="Sprite2D" parent="Numbers"]
+texture_filter = 1
+position = Vector2(4, 1.75)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("7_81anc")
+
+[node name="NumberSix" type="Sprite2D" parent="Numbers"]
+texture_filter = 1
+position = Vector2(5.65, 1.75)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("8_g6p1p")
+
+[node name="NumberSeven" type="Sprite2D" parent="Numbers"]
+texture_filter = 1
+position = Vector2(2.35, 4.1)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("9_w08ay")
+
+[node name="NumberEight" type="Sprite2D" parent="Numbers"]
+texture_filter = 1
+position = Vector2(4, 4.1)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("10_qqrf5")
+
+[node name="NumberNine" type="Sprite2D" parent="Numbers"]
+texture_filter = 1
+position = Vector2(5.65, 4.1)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("11_pb2yx")
+
+[node name="Operators" type="Node2D" parent="."]
+position = Vector2(747, 364)
+scale = Vector2(40, 30)
+
+[node name="MultiplicationSign" type="Sprite2D" parent="Operators"]
+texture_filter = 1
+position = Vector2(-7.5, 2)
+scale = Vector2(0.067, 0.08)
+texture = ExtResource("12_86bnw")
+
+[node name="DivisionSign" type="Sprite2D" parent="Operators"]
+texture_filter = 1
+position = Vector2(-5, 2)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("13_5rq3a")
+
+[node name="AdditionSign" type="Sprite2D" parent="Operators"]
+texture_filter = 1
+position = Vector2(-7.5, 5)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("14_j4g36")
+
+[node name="SubtractionSign" type="Sprite2D" parent="Operators"]
+texture_filter = 1
+position = Vector2(-5, 5)
+scale = Vector2(0.05, 0.0666667)
+texture = ExtResource("15_kufni")
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Key" type="Sprite2D" parent="Items"]
+texture_filter = 1
+position = Vector2(757, 364)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("16_hcjod")
+
+[node name="Operation Zone" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(600, 206)
+scale = Vector2(20, 3)
+texture = ExtResource("17_ncn8t")
