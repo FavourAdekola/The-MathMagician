@@ -1,7 +1,7 @@
 #To-Do List
 
 ## Art (Everything is base 32x32, but Assets varying in size can break the resolution  Buildings and Structures Mostly)
-- [ ]Cave TileSet(Variety Floors, Chasms, Walls, Decorations) 
+- [x]Cave TileSet(Variety Floors, Chasms, Walls, Decorations) 
 - [ ]Kingdom TileSet
 - [ ]Wizard Boss
 - [ ]Naga Boss
