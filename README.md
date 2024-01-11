@@ -24,7 +24,7 @@
 - [ ] Naga Boss
 - [ ] Level 3 Code
 - [ ] Final Boss
-- [ ] Title Screen
+- [ ]  Title Screen
 
 ## Scene Construction(Good Indicator of Overall Progress)
 - [ ] TileSet Scenes
