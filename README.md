@@ -25,7 +25,6 @@
 - [ ] Level 3 Code
 - [ ] Final Boss
 - [ ] Title Screen
-- [ ] ...
 
 ## Scene Construction(Good Indicator of Overall Progress)
 - [ ] TileSet Scenes
@@ -33,6 +32,5 @@
 - [ ] Level 1 
 - [ ] Level 2
 - [ ] Level 3
-- [ ]Title Screen
+- [ ] Title Screen
 
-More Will Be Added Probably
