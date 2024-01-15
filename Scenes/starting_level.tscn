@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://l0ivw6xefy5i"]
+[gd_scene load_steps=13 format=3 uid="uid://l0ivw6xefy5i"]
 
 [ext_resource type="Texture2D" uid="uid://dm6wp5qr0pj5f" path="res://Assets/Sprites/Castle Floor.png" id="1_7o7ja"]
 [ext_resource type="Texture2D" uid="uid://snlmwhfgpqqm" path="res://Assets/Sprites/Castle Floor Open.png" id="1_fhvnb"]
@@ -6,6 +6,12 @@
 [ext_resource type="Script" path="res://Scripts/CharacterMarker.gd" id="3_eq5be"]
 [ext_resource type="Texture2D" uid="uid://lg55tqdqwjba" path="res://Assets/Sprites/Character Marker.png" id="4_ofixa"]
 [ext_resource type="PackedScene" uid="uid://baw2nycjbf8fe" path="res://Scenes/player.tscn" id="5_ibpnf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r66nj"]
+size = Vector2(73.3333, 12.6667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_th5sl"]
+size = Vector2(480.667, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pey2u"]
 radius = 1.0
@@ -68,6 +74,25 @@ texture_filter = 1
 position = Vector2(0, 285)
 texture = ExtResource("2_eenn1")
 centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Main Room"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Main Room/StaticBody2D"]
+position = Vector2(0.666667, 0.666667)
+polygon = PackedVector2Array(206, 508, 206, 380, -1.33333, 380, -0.666667, 571.333, 158.667, 571.333, 203.333, 601.333, 277.333, 601.333, 277.333, 577.333, 201.333, 577.333, 160, 541.333, 160, 508)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Main Room/StaticBody2D"]
+position = Vector2(480.667, 0.666667)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(206, 508, 206, 380, -1.33333, 380, -0.666667, 571.333, 158.667, 571.333, 203.333, 601.333, 277.333, 601.333, 277.333, 577.333, 201.333, 577.333, 160, 541.333, 160, 508)
+
+[node name="Gate" type="CollisionShape2D" parent="Main Room/StaticBody2D"]
+position = Vector2(239.333, 121)
+shape = SubResource("RectangleShape2D_r66nj")
+
+[node name="Wall" type="CollisionShape2D" parent="Main Room/StaticBody2D"]
+position = Vector2(239.667, 117.333)
+shape = SubResource("RectangleShape2D_th5sl")
 
 [node name="CharacterMarker" type="CharacterBody2D" parent="."]
 texture_filter = 1
