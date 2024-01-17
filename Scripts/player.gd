@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 const GRAVITY  = 1000.0
 
-var direction = Vector2.ZERO
+@export var direction = Vector2.ZERO
 var dash_dir = Vector2(1,0)
 var SPEED = 200.0
 var JUMP_VELOCITY = -400.0
@@ -69,3 +69,6 @@ func _on_dash_timer_timeout():
 func _on_dash_length_timeout():
 	dashing = false
 	dash_time.start()
+	
+func move(moving : Vector2):
+	pass
