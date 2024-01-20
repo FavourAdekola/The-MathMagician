@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://baw2nycjbf8fe"]
+[gd_scene load_steps=5 format=3 uid="uid://baw2nycjbf8fe"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ydvmm"]
 [ext_resource type="Texture2D" uid="uid://dtquwfctumla2" path="res://Assets/Sprites/player.png" id="2_3ylkg"]
+[ext_resource type="Texture2D" uid="uid://bldt26r41i64r" path="res://Assets/Sprites/Book Icon.png" id="3_hm6qw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbilt"]
 radius = 9.0
@@ -35,6 +36,13 @@ shape = SubResource("CapsuleShape2D_tbilt")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
+visible = false
+texture_filter = 1
+position = Vector2(340, -180)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hm6qw")
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.5

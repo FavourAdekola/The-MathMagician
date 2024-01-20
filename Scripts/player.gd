@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var dash_time = $DashTimer
 @onready var dash_dur = $DashLength
+@onready var collision = $CollisionShape2D
 
 const GRAVITY  = 1000.0
 
@@ -18,14 +19,16 @@ var jumping = false
 var jump_position = 0
 var can_dash = true
 var dashing = false
+var can_move = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
 
 func _physics_process(delta):
 	print(direction)
-	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	if can_move:
+		direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+		direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	
 	if direction != Vector2.ZERO:
 		dash_dir = direction
@@ -70,5 +73,11 @@ func _on_dash_length_timeout():
 	dashing = false
 	dash_time.start()
 	
-func move(moving : Vector2):
-	pass
+func prep_cutscene():
+	can_move = false
+	collision.disabled = true
+
+func fin_cutscene():
+	can_move = true
+	collision.disabled = false
+	
