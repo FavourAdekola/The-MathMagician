@@ -1,21 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://l0ivw6xefy5i"]
+[gd_scene load_steps=14 format=3 uid="uid://l0ivw6xefy5i"]
 
 [ext_resource type="Texture2D" uid="uid://dm6wp5qr0pj5f" path="res://Assets/Sprites/Castle Floor.png" id="1_7o7ja"]
 [ext_resource type="Texture2D" uid="uid://snlmwhfgpqqm" path="res://Assets/Sprites/Castle Floor Open.png" id="1_fhvnb"]
 [ext_resource type="Texture2D" uid="uid://dwmh2bohjoqhh" path="res://Assets/Sprites/Castle Wall.png" id="2_eenn1"]
-[ext_resource type="Script" path="res://Scripts/CharacterMarker.gd" id="3_eq5be"]
-[ext_resource type="Texture2D" uid="uid://lg55tqdqwjba" path="res://Assets/Sprites/Character Marker.png" id="4_ofixa"]
 [ext_resource type="PackedScene" uid="uid://baw2nycjbf8fe" path="res://Scenes/player.tscn" id="5_ibpnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r66nj"]
 size = Vector2(73.3333, 12.6667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_th5sl"]
-size = Vector2(480.667, 20)
+size = Vector2(208, 20)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pey2u"]
-radius = 1.0
-height = 23.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk8tj"]
+size = Vector2(20, 98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nb54a"]
+size = Vector2(53.3333, 95.3334)
+
+[sub_resource type="Gradient" id="Gradient_jt37h"]
+offsets = PackedFloat32Array(0, 0.153846)
+colors = PackedColorArray(1, 0.666667, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bolyn"]
+gradient = SubResource("Gradient_jt37h")
 
 [sub_resource type="Animation" id="Animation_pikps"]
 resource_name = "Door Opens"
@@ -75,42 +82,58 @@ position = Vector2(0, 285)
 texture = ExtResource("2_eenn1")
 centered = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Main Room"]
+[node name="Wall Colliders" type="StaticBody2D" parent="Main Room"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Main Room/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Main Room/Wall Colliders"]
 position = Vector2(0.666667, 0.666667)
 polygon = PackedVector2Array(206, 508, 206, 380, -1.33333, 380, -0.666667, 571.333, 158.667, 571.333, 203.333, 601.333, 277.333, 601.333, 277.333, 577.333, 201.333, 577.333, 160, 541.333, 160, 508)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Main Room/StaticBody2D"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Main Room/Wall Colliders"]
 position = Vector2(480.667, 0.666667)
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(206, 508, 206, 380, -1.33333, 380, -0.666667, 571.333, 158.667, 571.333, 203.333, 601.333, 277.333, 601.333, 277.333, 577.333, 201.333, 577.333, 160, 541.333, 160, 508)
 
-[node name="Gate" type="CollisionShape2D" parent="Main Room/StaticBody2D"]
+[node name="Gate" type="CollisionShape2D" parent="Main Room/Wall Colliders"]
 position = Vector2(239.333, 121)
 shape = SubResource("RectangleShape2D_r66nj")
 
-[node name="Wall" type="CollisionShape2D" parent="Main Room/StaticBody2D"]
-position = Vector2(239.667, 117.333)
+[node name="Wall" type="CollisionShape2D" parent="Main Room/Wall Colliders"]
+position = Vector2(102.667, 117.333)
 shape = SubResource("RectangleShape2D_th5sl")
 
-[node name="CharacterMarker" type="CharacterBody2D" parent="."]
-texture_filter = 1
-position = Vector2(361, 838)
-scale = Vector2(1.5, 1.5)
-script = ExtResource("3_eq5be")
+[node name="Wall2" type="CollisionShape2D" parent="Main Room/Wall Colliders"]
+position = Vector2(378, 117.333)
+shape = SubResource("RectangleShape2D_th5sl")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterMarker"]
-texture_filter = 1
-position = Vector2(-0.5, 6)
-texture = ExtResource("4_ofixa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/Wall Colliders"]
+position = Vector2(483.333, 175)
+shape = SubResource("RectangleShape2D_nk8tj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterMarker"]
-visible = false
-position = Vector2(0, 11)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_pey2u")
-disabled = true
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Main Room/Wall Colliders"]
+position = Vector2(-1.33331, 175)
+shape = SubResource("RectangleShape2D_nk8tj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Main Room/Wall Colliders"]
+position = Vector2(-1.33331, 368)
+shape = SubResource("RectangleShape2D_nk8tj")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Main Room/Wall Colliders"]
+position = Vector2(482.667, 368)
+shape = SubResource("RectangleShape2D_nk8tj")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Main Room/Wall Colliders"]
+position = Vector2(482.667, 271.333)
+shape = SubResource("RectangleShape2D_nk8tj")
+
+[node name="Entrance" type="Area2D" parent="Main Room"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/Entrance"]
+position = Vector2(-26.6667, 271.667)
+shape = SubResource("RectangleShape2D_nb54a")
+
+[node name="Light" type="Polygon2D" parent="Main Room"]
+texture = SubResource("GradientTexture1D_bolyn")
+polygon = PackedVector2Array(0, 224, 0, 319.333, 33.3333, 322, 32.6667, 222)
 
 [node name="Player" parent="." instance=ExtResource("5_ibpnf")]
 position = Vector2(361, 838)

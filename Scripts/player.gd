@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var dash_time = $DashTimer
 @onready var dash_dur = $DashLength
 @onready var collision = $CollisionShape2D
+@onready var book = $CanvasLayer/BookIcon
 
 const GRAVITY  = 1000.0
 
@@ -25,7 +26,7 @@ var can_move = true
 
 
 func _physics_process(delta):
-	print(direction)
+	#update_book()
 	if can_move:
 		direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -80,4 +81,9 @@ func prep_cutscene():
 func fin_cutscene():
 	can_move = true
 	collision.disabled = false
+	
+func update_book():
+	book.visible = GlobalVar.book_visible
+	book.get_node("Area2D/CollisionShape2D").disabled = GlobalVar.book_visible
+	
 	

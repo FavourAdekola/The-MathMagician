@@ -24,3 +24,10 @@ func _physics_process(delta):
 func _on_trigger_destructibles_body_entered(body):
 	if body.name == "Player":
 		anim.play("Fall Off Destructibles")
+
+
+func _on_book_body_entered(body):
+	if body.name == "Player":
+		GlobalVar.book_visible = true
+		GlobalVar.addition = true
+		$Book.queue_free()
