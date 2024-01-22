@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ydvmm"]
 [ext_resource type="Texture2D" uid="uid://dtquwfctumla2" path="res://Assets/Sprites/player.png" id="2_3ylkg"]
+[ext_resource type="Texture2D" uid="uid://dmlmi1h6tkaha" path="res://Assets/Sprites/Open Book.png" id="3_008lw"]
 [ext_resource type="Texture2D" uid="uid://bldt26r41i64r" path="res://Assets/Sprites/Book Icon.png" id="3_hm6qw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4xus"]
-size = Vector2(23, 28)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbilt"]
 radius = 9.0
@@ -15,23 +13,17 @@ height = 36.0
 script = ExtResource("1_ydvmm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
 
-[node name="BookIcon" type="TextureRect" parent="CanvasLayer"]
+[node name="BookIcon" type="TextureButton" parent="CanvasLayer"]
+visible = false
 texture_filter = 1
-offset_left = 274.0
-offset_top = -181.0
-offset_right = 306.0
-offset_bottom = -149.0
-scale = Vector2(2, 2)
-texture = ExtResource("3_hm6qw")
-
-[node name="Area2D" type="Area2D" parent="CanvasLayer/BookIcon"]
-position = Vector2(16, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/BookIcon/Area2D"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_m4xus")
+offset_left = 1133.0
+offset_top = 18.0
+offset_right = 1165.0
+offset_bottom = 50.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("3_hm6qw")
+texture_hover = ExtResource("3_008lw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

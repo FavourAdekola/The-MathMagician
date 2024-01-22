@@ -9,16 +9,17 @@ extends CharacterBody2D
 const GRAVITY  = 1000.0
 
 @export var direction = Vector2.ZERO
+@export var checkpoint = Vector2.ZERO
 var dash_dir = Vector2(1,0)
 var SPEED = 200.0
 var JUMP_VELOCITY = -400.0
 var DASH_SPEED = 800.0
 
 
+@export var can_dash = false
 var grounded = true
 var jumping = false
 var jump_position = 0
-var can_dash = true
 var dashing = false
 var can_move = true
 
@@ -26,7 +27,7 @@ var can_move = true
 
 
 func _physics_process(delta):
-	#update_book()
+	update_book()
 	if can_move:
 		direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -84,6 +85,8 @@ func fin_cutscene():
 	
 func update_book():
 	book.visible = GlobalVar.book_visible
-	book.get_node("Area2D/CollisionShape2D").disabled = GlobalVar.book_visible
+	book.disabled = !GlobalVar.book_visible
 	
+func respawn():
+	global_position = checkpoint
 	
