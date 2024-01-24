@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bklpyxfwqfpdy"]
+[gd_scene load_steps=21 format=3 uid="uid://bklpyxfwqfpdy"]
 
 [ext_resource type="Texture2D" uid="uid://dmlmi1h6tkaha" path="res://Assets/Sprites/Open Book.png" id="1_50wj6"]
+[ext_resource type="Script" path="res://Scripts/spellbook.gd" id="1_f62ck"]
 [ext_resource type="Texture2D" uid="uid://cqo5aylbp33ae" path="res://Assets/Sprites/NumberOne.png" id="2_vfgf0"]
 [ext_resource type="Texture2D" uid="uid://ocmi8b85xe5n" path="res://Assets/Sprites/NumberZero.png" id="3_go5jv"]
 [ext_resource type="Texture2D" uid="uid://bi80s2rtidnar" path="res://Assets/Sprites/NumberTwo.png" id="4_flsoy"]
@@ -18,9 +19,19 @@
 [ext_resource type="Texture2D" uid="uid://pnq4116d3nkm" path="res://Assets/Sprites/Key.png" id="16_hcjod"]
 [ext_resource type="Texture2D" uid="uid://ctn0a51odma7r" path="res://Assets/Sprites/slab.png" id="17_ncn8t"]
 
+[sub_resource type="Theme" id="Theme_a8p0n"]
+default_font_size = 20
+
+[sub_resource type="Theme" id="Theme_gkvwc"]
+default_font_size = 36
+
 [node name="Panel" type="Panel"]
-offset_right = 1152.0
-offset_bottom = 647.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f62ck")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -29,107 +40,200 @@ scale = Vector2(15, 10)
 texture = ExtResource("1_50wj6")
 
 [node name="Numbers" type="Node2D" parent="."]
-position = Vector2(607, 426)
-scale = Vector2(25, 18.75)
+position = Vector2(610, 423)
 
-[node name="NumberOne" type="Sprite2D" parent="Numbers"]
+[node name="NumberZero" type="TextureButton" parent="Numbers"]
 texture_filter = 1
-position = Vector2(2.35, -0.6)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("2_vfgf0")
+offset_left = 75.0
+offset_top = 98.0
+offset_right = 107.0
+offset_bottom = 130.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("3_go5jv")
 
-[node name="NumberZero" type="Sprite2D" parent="Numbers"]
+[node name="NumberOne" type="TextureButton" parent="Numbers"]
 texture_filter = 1
-position = Vector2(4, 6.45)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("3_go5jv")
+offset_left = 13.0
+offset_top = -39.0
+offset_right = 45.0
+offset_bottom = -7.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("2_vfgf0")
 
-[node name="NumberTwo" type="Sprite2D" parent="Numbers"]
+[node name="NumberTwo" type="TextureButton" parent="Numbers"]
 texture_filter = 1
-position = Vector2(4, -0.6)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("4_flsoy")
+offset_left = 70.0
+offset_top = -39.0
+offset_right = 102.0
+offset_bottom = -7.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("4_flsoy")
 
-[node name="NumberThree" type="Sprite2D" parent="Numbers"]
+[node name="NumberThree" type="TextureButton" parent="Numbers"]
 texture_filter = 1
-position = Vector2(5.65, -0.6)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("5_w45by")
+offset_left = 133.0
+offset_top = -38.0
+offset_right = 165.0
+offset_bottom = -6.0
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource("5_w45by")
 
-[node name="NumberFour" type="Sprite2D" parent="Numbers"]
+[node name="NumberFour" type="TextureButton" parent="Numbers"]
 texture_filter = 1
-position = Vector2(2.35, 1.75)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("6_t3iuo")
+offset_left = 13.0
+offset_top = 4.0
+offset_right = 45.0
+offset_bottom = 36.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("6_t3iuo")
 
-[node name="NumberFive" type="Sprite2D" parent="Numbers"]
+[node name="NumberFive" type="TextureButton" parent="Numbers"]
 texture_filter = 1
-position = Vector2(4, 1.75)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("7_81anc")
+offset_left = 69.0
+offset_top = 5.0
+offset_right = 101.0
+offset_bottom = 37.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("7_81anc")
 
-[node name="NumberSix" type="Sprite2D" parent="Numbers"]
+[node name="NumberSix" type="TextureButton" parent="Numbers"]
 texture_filter = 1
-position = Vector2(5.65, 1.75)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("8_g6p1p")
+offset_left = 134.0
+offset_top = 5.0
+offset_right = 166.0
+offset_bottom = 37.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("8_g6p1p")
 
-[node name="NumberSeven" type="Sprite2D" parent="Numbers"]
+[node name="NumberSeven" type="TextureButton" parent="Numbers"]
 texture_filter = 1
-position = Vector2(2.35, 4.1)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("9_w08ay")
+offset_left = 13.0
+offset_top = 47.0
+offset_right = 45.0
+offset_bottom = 79.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("9_w08ay")
 
-[node name="NumberEight" type="Sprite2D" parent="Numbers"]
+[node name="NumberEight" type="TextureButton" parent="Numbers"]
 texture_filter = 1
-position = Vector2(4, 4.1)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("10_qqrf5")
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 104.0
+offset_bottom = 80.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("10_qqrf5")
 
-[node name="NumberNine" type="Sprite2D" parent="Numbers"]
+[node name="NumberNine" type="TextureButton" parent="Numbers"]
 texture_filter = 1
-position = Vector2(5.65, 4.1)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("11_pb2yx")
+offset_left = 132.0
+offset_top = 48.0
+offset_right = 164.0
+offset_bottom = 80.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("11_pb2yx")
+
+[node name="Clear" type="Button" parent="Numbers"]
+offset_left = 117.0
+offset_top = 103.0
+offset_right = 186.0
+offset_bottom = 139.0
+theme = SubResource("Theme_a8p0n")
+text = "CLR"
+
+[node name="Enter" type="Button" parent="Numbers"]
+offset_left = 5.0
+offset_top = 103.0
+offset_right = 76.0
+offset_bottom = 139.0
+theme = SubResource("Theme_a8p0n")
+text = "ENTER"
 
 [node name="Operators" type="Node2D" parent="."]
-position = Vector2(747, 364)
-scale = Vector2(40, 30)
+position = Vector2(729, 364)
 
-[node name="MultiplicationSign" type="Sprite2D" parent="Operators"]
+[node name="AdditionSign" type="TextureButton" parent="Operators"]
 texture_filter = 1
-position = Vector2(-7.5, 2)
-scale = Vector2(0.067, 0.08)
-texture = ExtResource("12_86bnw")
+offset_left = -300.0
+offset_top = 25.0
+offset_right = -268.0
+offset_bottom = 57.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("14_j4g36")
 
-[node name="DivisionSign" type="Sprite2D" parent="Operators"]
+[node name="SubtractionSign" type="TextureButton" parent="Operators"]
 texture_filter = 1
-position = Vector2(-5, 2)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("13_5rq3a")
+offset_left = -225.0
+offset_top = 25.0
+offset_right = -193.0
+offset_bottom = 57.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("15_kufni")
 
-[node name="AdditionSign" type="Sprite2D" parent="Operators"]
+[node name="DivisionSign" type="TextureButton" parent="Operators"]
 texture_filter = 1
-position = Vector2(-7.5, 5)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("14_j4g36")
+offset_left = -225.0
+offset_top = 100.0
+offset_right = -193.0
+offset_bottom = 132.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("13_5rq3a")
 
-[node name="SubtractionSign" type="Sprite2D" parent="Operators"]
+[node name="MultiplicationSign" type="TextureButton" parent="Operators"]
 texture_filter = 1
-position = Vector2(-5, 5)
-scale = Vector2(0.05, 0.0666667)
-texture = ExtResource("15_kufni")
+offset_left = -300.0
+offset_top = 100.0
+offset_right = -268.0
+offset_bottom = 132.0
+scale = Vector2(2.2, 2.2)
+texture_normal = ExtResource("12_86bnw")
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Key" type="Sprite2D" parent="Items"]
+[node name="Key" type="TextureButton" parent="Items"]
 texture_filter = 1
-position = Vector2(757, 364)
+offset_left = 745.0
+offset_top = 335.0
+offset_right = 777.0
+offset_bottom = 367.0
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("16_hcjod")
+texture_normal = ExtResource("16_hcjod")
 
-[node name="Operation Zone" type="Sprite2D" parent="."]
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Operation Zone" type="TextureRect" parent="Control"]
 texture_filter = 1
-position = Vector2(600, 206)
-scale = Vector2(20, 3)
+layout_mode = 0
+offset_left = 280.0
+offset_top = 170.0
+offset_right = 312.0
+offset_bottom = 202.0
+scale = Vector2(20, 4)
 texture = ExtResource("17_ncn8t")
+
+[node name="Equation" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 193.0
+offset_right = 386.0
+offset_bottom = 243.0
+theme = SubResource("Theme_gkvwc")
+
+[connection signal="button_down" from="Numbers/NumberZero" to="." method="_on_number_zero_button_down"]
+[connection signal="button_down" from="Numbers/NumberOne" to="." method="_on_number_one_button_down"]
+[connection signal="button_down" from="Numbers/NumberTwo" to="." method="_on_number_two_button_down"]
+[connection signal="button_down" from="Numbers/NumberThree" to="." method="_on_number_three_button_down"]
+[connection signal="button_down" from="Numbers/NumberFour" to="." method="_on_number_four_button_down"]
+[connection signal="button_down" from="Numbers/NumberFive" to="." method="_on_number_five_button_down"]
+[connection signal="button_down" from="Numbers/NumberSix" to="." method="_on_number_six_button_down"]
+[connection signal="button_down" from="Numbers/NumberSeven" to="." method="_on_number_seven_button_down"]
+[connection signal="button_down" from="Numbers/NumberEight" to="." method="_on_number_eight_button_down"]
+[connection signal="button_down" from="Numbers/NumberNine" to="." method="_on_number_nine_button_down"]
+[connection signal="button_down" from="Numbers/Clear" to="." method="_on_clear_button_down"]
+[connection signal="button_down" from="Numbers/Enter" to="." method="_on_enter_button_down"]
+[connection signal="button_down" from="Operators/AdditionSign" to="." method="_on_addition_sign_button_down"]
+[connection signal="button_down" from="Operators/SubtractionSign" to="." method="_on_subtraction_sign_button_down"]
+[connection signal="button_down" from="Operators/DivisionSign" to="." method="_on_division_sign_button_down"]
+[connection signal="button_down" from="Operators/MultiplicationSign" to="." method="_on_multiplication_sign_button_down"]

@@ -13,7 +13,7 @@ const GRAVITY  = 1000.0
 var dash_dir = Vector2(1,0)
 var SPEED = 200.0
 var JUMP_VELOCITY = -400.0
-var DASH_SPEED = 800.0
+var DASH_SPEED = 1000.0
 
 
 @export var can_dash = false
@@ -22,9 +22,9 @@ var jumping = false
 var jump_position = 0
 var dashing = false
 var can_move = true
+var can_activate_book = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-
 
 func _physics_process(delta):
 	update_book()

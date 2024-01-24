@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://l0ivw6xefy5i"]
+[gd_scene load_steps=16 format=3 uid="uid://l0ivw6xefy5i"]
 
 [ext_resource type="Texture2D" uid="uid://dm6wp5qr0pj5f" path="res://Assets/Sprites/Castle Floor.png" id="1_7o7ja"]
 [ext_resource type="Script" path="res://Scripts/starting_level.gd" id="1_7rymu"]
@@ -24,6 +24,9 @@ colors = PackedColorArray(1, 0.666667, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_bolyn"]
 gradient = SubResource("Gradient_jt37h")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkm4n"]
+size = Vector2(99.3333, 47.3333)
 
 [sub_resource type="Animation" id="Animation_pikps"]
 resource_name = "Door Opens"
@@ -64,7 +67,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -76,7 +79,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vdf47"]
@@ -97,7 +100,6 @@ texture = ExtResource("1_fhvnb")
 centered = false
 
 [node name="CastleFloor" type="Sprite2D" parent="Main Room"]
-modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 texture = ExtResource("1_7o7ja")
 centered = false
@@ -122,7 +124,6 @@ polygon = PackedVector2Array(206, 508, 206, 380, -1.33333, 380, -0.666667, 571.3
 [node name="Gate" type="CollisionShape2D" parent="Main Room/Wall Colliders"]
 position = Vector2(239.333, 121)
 shape = SubResource("RectangleShape2D_r66nj")
-disabled = true
 
 [node name="Wall" type="CollisionShape2D" parent="Main Room/Wall Colliders"]
 position = Vector2(102.667, 117.333)
@@ -162,6 +163,13 @@ shape = SubResource("RectangleShape2D_nb54a")
 texture = SubResource("GradientTexture1D_bolyn")
 polygon = PackedVector2Array(0, 224, 0, 319.333, 33.3333, 322, 32.6667, 222)
 
+[node name="BookInteraction" type="Area2D" parent="Main Room"]
+position = Vector2(200.667, 137.333)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/BookInteraction"]
+position = Vector2(39.6667, 13.6667)
+shape = SubResource("RectangleShape2D_vkm4n")
+
 [node name="Player" parent="." instance=ExtResource("5_ibpnf")]
 position = Vector2(361, 838)
 scale = Vector2(0.75, 0.75)
@@ -173,3 +181,5 @@ libraries = {
 }
 
 [connection signal="body_entered" from="Main Room/Entrance" to="." method="_on_entrance_body_entered"]
+[connection signal="body_entered" from="Main Room/BookInteraction" to="." method="_on_book_interaction_body_entered"]
+[connection signal="body_exited" from="Main Room/BookInteraction" to="." method="_on_book_interaction_body_exited"]
