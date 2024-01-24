@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var dash_dur = $DashLength
 @onready var collision = $CollisionShape2D
 @onready var book = $CanvasLayer/BookIcon
+@onready var spell_book = $CanvasLayer/OpenBook
 
 const GRAVITY  = 1000.0
 
@@ -25,6 +26,9 @@ var can_move = true
 var can_activate_book = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
+
+func _ready():
+	spell_book.player = self
 
 func _physics_process(delta):
 	update_book()
@@ -89,4 +93,13 @@ func update_book():
 	
 func respawn():
 	global_position = checkpoint
+
+func _on_book_icon_button_down():
+	GlobalVar.book_visible = false
+	spell_book.visible = true
+	prep_cutscene()
 	
+func book_closed():
+	GlobalVar.book_visible = true
+	spell_book.visible = false
+	fin_cutscene()

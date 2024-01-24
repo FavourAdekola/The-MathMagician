@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://baw2nycjbf8fe"]
+[gd_scene load_steps=7 format=3 uid="uid://baw2nycjbf8fe"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ydvmm"]
 [ext_resource type="Texture2D" uid="uid://dtquwfctumla2" path="res://Assets/Sprites/player.png" id="2_3ylkg"]
 [ext_resource type="Texture2D" uid="uid://dmlmi1h6tkaha" path="res://Assets/Sprites/Open Book.png" id="3_008lw"]
 [ext_resource type="Texture2D" uid="uid://bldt26r41i64r" path="res://Assets/Sprites/Book Icon.png" id="3_hm6qw"]
+[ext_resource type="PackedScene" uid="uid://bklpyxfwqfpdy" path="res://Scenes/spellbook.tscn" id="4_hbucy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbilt"]
 radius = 9.0
@@ -24,6 +25,13 @@ offset_bottom = 50.0
 scale = Vector2(4, 4)
 texture_normal = ExtResource("3_hm6qw")
 texture_hover = ExtResource("3_008lw")
+
+[node name="OpenBook" parent="CanvasLayer" instance=ExtResource("4_hbucy")]
+visible = false
+offset_left = -4.0
+offset_top = -2.0
+offset_right = -4.0
+offset_bottom = -2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -59,5 +67,6 @@ one_shot = true
 wait_time = 0.25
 one_shot = true
 
+[connection signal="button_down" from="CanvasLayer/BookIcon" to="." method="_on_book_icon_button_down"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashLength" to="." method="_on_dash_length_timeout"]
