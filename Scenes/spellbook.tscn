@@ -60,6 +60,7 @@ offset_bottom = 509.0
 
 [node name="NumberZero" type="TextureButton" parent="Numbers"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 75.0
 offset_top = 98.0
 offset_right = 107.0
@@ -69,6 +70,7 @@ texture_normal = ExtResource("3_go5jv")
 
 [node name="NumberOne" type="TextureButton" parent="Numbers"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 13.0
 offset_top = -39.0
 offset_right = 45.0
@@ -78,6 +80,7 @@ texture_normal = ExtResource("2_vfgf0")
 
 [node name="NumberTwo" type="TextureButton" parent="Numbers"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 70.0
 offset_top = -39.0
 offset_right = 102.0
@@ -87,6 +90,7 @@ texture_normal = ExtResource("4_flsoy")
 
 [node name="NumberThree" type="TextureButton" parent="Numbers"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 133.0
 offset_top = -38.0
 offset_right = 165.0
@@ -96,6 +100,7 @@ texture_normal = ExtResource("5_w45by")
 
 [node name="NumberFour" type="TextureButton" parent="Numbers"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 13.0
 offset_top = 4.0
 offset_right = 45.0
@@ -105,6 +110,7 @@ texture_normal = ExtResource("6_t3iuo")
 
 [node name="NumberFive" type="TextureButton" parent="Numbers"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 69.0
 offset_top = 5.0
 offset_right = 101.0
@@ -114,6 +120,7 @@ texture_normal = ExtResource("7_81anc")
 
 [node name="NumberSix" type="TextureButton" parent="Numbers"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 134.0
 offset_top = 5.0
 offset_right = 166.0
@@ -123,6 +130,7 @@ texture_normal = ExtResource("8_g6p1p")
 
 [node name="NumberSeven" type="TextureButton" parent="Numbers"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 13.0
 offset_top = 47.0
 offset_right = 45.0
@@ -132,6 +140,7 @@ texture_normal = ExtResource("9_w08ay")
 
 [node name="NumberEight" type="TextureButton" parent="Numbers"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 72.0
 offset_top = 48.0
 offset_right = 104.0
@@ -141,6 +150,7 @@ texture_normal = ExtResource("10_qqrf5")
 
 [node name="NumberNine" type="TextureButton" parent="Numbers"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 132.0
 offset_top = 48.0
 offset_right = 164.0
@@ -149,6 +159,7 @@ scale = Vector2(1.3, 1.3)
 texture_normal = ExtResource("11_pb2yx")
 
 [node name="Clear" type="Button" parent="Numbers"]
+layout_mode = 0
 offset_left = 117.0
 offset_top = 103.0
 offset_right = 186.0
@@ -157,6 +168,7 @@ theme = SubResource("Theme_a8p0n")
 text = "CLR"
 
 [node name="Enter" type="Button" parent="Numbers"]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 103.0
 offset_right = 76.0
@@ -173,6 +185,7 @@ offset_bottom = 450.0
 
 [node name="AdditionSign" type="TextureButton" parent="Operators"]
 texture_filter = 1
+layout_mode = 0
 offset_left = -300.0
 offset_top = 25.0
 offset_right = -268.0
@@ -182,6 +195,7 @@ texture_normal = ExtResource("14_j4g36")
 
 [node name="SubtractionSign" type="TextureButton" parent="Operators"]
 texture_filter = 1
+layout_mode = 0
 offset_left = -225.0
 offset_top = 25.0
 offset_right = -193.0
@@ -191,6 +205,7 @@ texture_normal = ExtResource("15_kufni")
 
 [node name="DivisionSign" type="TextureButton" parent="Operators"]
 texture_filter = 1
+layout_mode = 0
 offset_left = -225.0
 offset_top = 100.0
 offset_right = -193.0
@@ -200,6 +215,7 @@ texture_normal = ExtResource("13_5rq3a")
 
 [node name="MultiplicationSign" type="TextureButton" parent="Operators"]
 texture_filter = 1
+layout_mode = 0
 offset_left = -300.0
 offset_top = 100.0
 offset_right = -268.0
@@ -208,6 +224,7 @@ scale = Vector2(2.2, 2.2)
 texture_normal = ExtResource("12_86bnw")
 
 [node name="Close" type="Button" parent="Operators"]
+layout_mode = 0
 offset_left = -263.0
 offset_top = -23.0
 offset_right = -192.0
@@ -224,6 +241,7 @@ offset_bottom = 86.0
 
 [node name="Key" type="TextureButton" parent="Items"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 745.0
 offset_top = 335.0
 offset_right = 777.0
@@ -260,8 +278,8 @@ theme = SubResource("Theme_gkvwc")
 [connection signal="button_down" from="Numbers/NumberZero" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberOne" to="." method="_on_number_one_button_down"]
 [connection signal="button_down" from="Numbers/NumberOne" to="." method="_on_number_down"]
-[connection signal="button_down" from="Numbers/NumberTwo" to="." method="_on_number_two_button_down"]
 [connection signal="button_down" from="Numbers/NumberTwo" to="." method="_on_number_down"]
+[connection signal="button_down" from="Numbers/NumberTwo" to="." method="_on_number_two_button_down"]
 [connection signal="button_down" from="Numbers/NumberThree" to="." method="_on_number_three_button_down"]
 [connection signal="button_down" from="Numbers/NumberThree" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberFour" to="." method="_on_number_four_button_down"]
@@ -272,10 +290,10 @@ theme = SubResource("Theme_gkvwc")
 [connection signal="button_down" from="Numbers/NumberSix" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberSeven" to="." method="_on_number_seven_button_down"]
 [connection signal="button_down" from="Numbers/NumberSeven" to="." method="_on_number_down"]
-[connection signal="button_down" from="Numbers/NumberEight" to="." method="_on_number_eight_button_down"]
 [connection signal="button_down" from="Numbers/NumberEight" to="." method="_on_number_down"]
-[connection signal="button_down" from="Numbers/NumberNine" to="." method="_on_number_nine_button_down"]
+[connection signal="button_down" from="Numbers/NumberEight" to="." method="_on_number_eight_button_down"]
 [connection signal="button_down" from="Numbers/NumberNine" to="." method="_on_number_down"]
+[connection signal="button_down" from="Numbers/NumberNine" to="." method="_on_number_nine_button_down"]
 [connection signal="button_down" from="Numbers/Clear" to="." method="_on_clear_button_down"]
 [connection signal="button_down" from="Numbers/Enter" to="." method="_on_enter_button_down"]
 [connection signal="button_down" from="Operators/AdditionSign" to="." method="_on_addition_sign_button_down"]

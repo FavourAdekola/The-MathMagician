@@ -99,6 +99,14 @@ texture_filter = 1
 texture = ExtResource("1_fhvnb")
 centered = false
 
+[node name="Passage" type="Sprite2D" parent="Main Room"]
+texture_filter = 1
+position = Vector2(206, 0)
+texture = ExtResource("1_fhvnb")
+centered = false
+region_enabled = true
+region_rect = Rect2(206, 0, 69, 127)
+
 [node name="CastleFloor" type="Sprite2D" parent="Main Room"]
 texture_filter = 1
 texture = ExtResource("1_7o7ja")
@@ -109,6 +117,14 @@ texture_filter = 1
 position = Vector2(0, 285)
 texture = ExtResource("2_eenn1")
 centered = false
+
+[node name="Castle Wall Hole" type="Sprite2D" parent="Main Room"]
+texture_filter = 1
+position = Vector2(206, 379.333)
+texture = ExtResource("2_eenn1")
+centered = false
+region_enabled = true
+region_rect = Rect2(206.016, 94.7018, 68.368, 129.27)
 
 [node name="Wall Colliders" type="StaticBody2D" parent="Main Room"]
 
