@@ -14,6 +14,10 @@ func _ready():
 func _process(delta):
 	pass
 
+func activate_item(item_name):
+	if item_name == "key":
+		$AnimationPlayer.play("Door Opens")
+		player.prep_cutscene()
 
 func _on_entrance_body_entered(body):
 	get_tree().change_scene_to_file("res://Scenes/library_level.tscn")
@@ -27,3 +31,8 @@ func _on_book_interaction_body_entered(body):
 func _on_book_interaction_body_exited(body):
 	if body.name == "Player":
 		player.can_activate_book = false
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Door Opens":
+		player.book_closed()

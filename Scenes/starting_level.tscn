@@ -183,3 +183,4 @@ libraries = {
 [connection signal="body_entered" from="Main Room/Entrance" to="." method="_on_entrance_body_entered"]
 [connection signal="body_entered" from="Main Room/BookInteraction" to="." method="_on_book_interaction_body_entered"]
 [connection signal="body_exited" from="Main Room/BookInteraction" to="." method="_on_book_interaction_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

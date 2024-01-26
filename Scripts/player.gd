@@ -103,3 +103,6 @@ func book_closed():
 	GlobalVar.book_visible = true
 	spell_book.visible = false
 	fin_cutscene()
+	
+func activate_item(item_name):
+	get_parent().activate_item(item_name)

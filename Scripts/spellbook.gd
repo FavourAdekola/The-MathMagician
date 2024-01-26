@@ -22,7 +22,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	$Operators/SubtractionSign.visible = GlobalVar.subtraction
+	$Operators/DivisionSign.visible = GlobalVar.division
+	$Operators/MultiplicationSign.visible = GlobalVar.multiplication
 
 func is_allow_to_write_symbol():
 	return (symbol == SYMBOL.NONE and state == FILL.FIRST_NUMBER)
