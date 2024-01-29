@@ -100,6 +100,7 @@ texture = ExtResource("1_fhvnb")
 centered = false
 
 [node name="Passage" type="Sprite2D" parent="Main Room"]
+z_index = 1
 texture_filter = 1
 position = Vector2(206, 0)
 texture = ExtResource("1_fhvnb")
@@ -119,6 +120,7 @@ texture = ExtResource("2_eenn1")
 centered = false
 
 [node name="Castle Wall Hole" type="Sprite2D" parent="Main Room"]
+z_index = 1
 texture_filter = 1
 position = Vector2(206, 379.333)
 texture = ExtResource("2_eenn1")

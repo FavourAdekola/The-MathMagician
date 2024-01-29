@@ -194,7 +194,6 @@ scale = Vector2(2, 2)
 texture_normal = ExtResource("14_j4g36")
 
 [node name="SubtractionSign" type="TextureButton" parent="Operators"]
-visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = -225.0
@@ -205,7 +204,6 @@ scale = Vector2(2, 2)
 texture_normal = ExtResource("15_kufni")
 
 [node name="DivisionSign" type="TextureButton" parent="Operators"]
-visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = -225.0
@@ -216,7 +214,6 @@ scale = Vector2(2, 2)
 texture_normal = ExtResource("13_5rq3a")
 
 [node name="MultiplicationSign" type="TextureButton" parent="Operators"]
-visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = -300.0
@@ -283,8 +280,8 @@ theme = SubResource("Theme_gkvwc")
 [connection signal="button_down" from="Numbers/NumberOne" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberTwo" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberTwo" to="." method="_on_number_two_button_down"]
-[connection signal="button_down" from="Numbers/NumberThree" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberThree" to="." method="_on_number_three_button_down"]
+[connection signal="button_down" from="Numbers/NumberThree" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberFour" to="." method="_on_number_four_button_down"]
 [connection signal="button_down" from="Numbers/NumberFour" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberFive" to="." method="_on_number_five_button_down"]
