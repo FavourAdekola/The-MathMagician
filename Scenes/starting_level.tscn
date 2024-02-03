@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://l0ivw6xefy5i"]
+[gd_scene load_steps=17 format=3 uid="uid://l0ivw6xefy5i"]
 
 [ext_resource type="Texture2D" uid="uid://dm6wp5qr0pj5f" path="res://Assets/Sprites/Castle Floor.png" id="1_7o7ja"]
 [ext_resource type="Script" path="res://Scripts/starting_level.gd" id="1_7rymu"]
@@ -27,6 +27,9 @@ gradient = SubResource("Gradient_jt37h")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkm4n"]
 size = Vector2(99.3333, 47.3333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8ftg"]
+size = Vector2(120, 50)
 
 [sub_resource type="Animation" id="Animation_pikps"]
 resource_name = "Door Opens"
@@ -188,6 +191,13 @@ position = Vector2(200.667, 137.333)
 position = Vector2(39.6667, 13.6667)
 shape = SubResource("RectangleShape2D_vkm4n")
 
+[node name="ExitDoor" type="Area2D" parent="Main Room"]
+position = Vector2(239.333, 62)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/ExitDoor"]
+position = Vector2(6, -17.6667)
+shape = SubResource("RectangleShape2D_j8ftg")
+
 [node name="Player" parent="." instance=ExtResource("5_ibpnf")]
 position = Vector2(361, 838)
 scale = Vector2(0.75, 0.75)
@@ -201,4 +211,5 @@ libraries = {
 [connection signal="body_entered" from="Main Room/Entrance" to="." method="_on_entrance_body_entered"]
 [connection signal="body_entered" from="Main Room/BookInteraction" to="." method="_on_book_interaction_body_entered"]
 [connection signal="body_exited" from="Main Room/BookInteraction" to="." method="_on_book_interaction_body_exited"]
+[connection signal="body_entered" from="Main Room/ExitDoor" to="." method="_on_exit_door_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

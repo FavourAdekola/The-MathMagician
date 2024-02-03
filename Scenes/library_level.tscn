@@ -232,5 +232,6 @@ polygon = PackedVector2Array(640, 257, 672, 257, 672, 353, 640, 353)
 [connection signal="body_entered" from="Book" to="." method="_on_book_body_entered"]
 [connection signal="body_entered" from="Areas/Trigger_Destructibles" to="." method="_on_trigger_destructibles_body_entered"]
 [connection signal="body_entered" from="Areas/Fall_Pit" to="." method="_on_fall_pit_body_entered"]
+[connection signal="body_exited" from="Areas/Fall_Pit" to="." method="_on_fall_pit_body_exit"]
 [connection signal="body_entered" from="Areas/Previous_Room" to="." method="_on_previous_room_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Area2D" to="." method="_on_checkpoint_body_entered"]

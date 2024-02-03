@@ -36,3 +36,8 @@ func _on_book_interaction_body_exited(body):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Door Opens":
 		player.book_closed()
+
+
+func _on_exit_door_body_entered(body):
+	if body.name == "Player":
+		get_tree().change_scene_to_file("res://Scenes/Exit_Hall.tscn")

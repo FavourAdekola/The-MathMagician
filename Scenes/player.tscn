@@ -14,6 +14,8 @@ height = 36.0
 script = ExtResource("1_ydvmm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(0.9, 0.9)
+transform = Transform2D(0.9, 0, 0, 0.9, 0, 0)
 
 [node name="BookIcon" type="TextureButton" parent="CanvasLayer"]
 visible = false
@@ -28,10 +30,10 @@ texture_hover = ExtResource("3_008lw")
 
 [node name="OpenBook" parent="CanvasLayer" instance=ExtResource("4_hbucy")]
 visible = false
-offset_left = -4.0
-offset_top = -2.0
-offset_right = -4.0
-offset_bottom = -2.0
+offset_left = 80.0
+offset_top = 90.0
+offset_right = 80.0
+offset_bottom = 90.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

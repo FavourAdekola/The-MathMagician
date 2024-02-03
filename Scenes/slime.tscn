@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsjvlk4bve3yv"]
+
+[ext_resource type="Texture2D" uid="uid://8l5wopp8hslp" path="res://Assets/Sprites/slime.png" id="1_fayk6"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ro7l4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w55af"]
+size = Vector2(32, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgtgm"]
+size = Vector2(88.5, 89.5)
+
+[sub_resource type="Theme" id="Theme_updwt"]
+default_font_size = 20
+
+[node name="Slime" type="StaticBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_ro7l4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_fayk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_w55af")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.75, 13.25)
+shape = SubResource("RectangleShape2D_hgtgm")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+self_modulate = Color(1, 0, 0.0352941, 1)
+offset_left = -13.25
+offset_top = -28.5
+offset_right = 26.75
+offset_bottom = 2.5
+theme = SubResource("Theme_updwt")
+text = "12"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

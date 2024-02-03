@@ -4,6 +4,7 @@ extends Node2D
 @onready var broken_floor = $"Destructible Floor"
 @onready var anim = $AnimationPlayer
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVar.room = "library level"
@@ -18,6 +19,8 @@ func _physics_process(delta):
 		player.position.y += 2
 	else: 
 		player.fin_cutscene()
+	if player.in_pit and !player.dashing:
+		player.respawn()
 		
 	
 
@@ -42,8 +45,11 @@ func _on_checkpoint_body_entered(body):
 
 func _on_fall_pit_body_entered(body):
 	if body.name == "Player":
-		if !player.dashing:
-			player.respawn()
+		player.in_pit = true
+
+func _on_fall_pit_body_exit(body):
+	if body.name == "Player":
+		player.in_pit = false
 
 
 func _on_previous_room_body_entered(body):

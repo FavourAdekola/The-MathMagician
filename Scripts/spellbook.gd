@@ -17,7 +17,7 @@ var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -136,6 +136,7 @@ func _on_enter_button_down():
 		var result = get_result(local_first_number, local_second_number)
 		
 		equation.text = str(result)
+		player.calc_value = result
 		set_state_to_first_number()
 		set_result_to_first(result)
 
