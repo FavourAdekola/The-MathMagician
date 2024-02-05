@@ -1,10 +1,13 @@
 extends StaticBody2D
 
 @export var value = 0
-var transperency = 255
+@onready var anim = $AnimationPlayer
 
 var player
 
+func _ready():
+	set_self_modulate(Color(255,255,255,255))
+	anim.play("idle")
 
 func _physics_process(delta):
 	if not player == null:
@@ -19,8 +22,10 @@ func _on_area_2d_body_entered(body):
 		player = body
 		
 func kill_process():
-	set_self_modulate(Color(255,255,255,transperency))
-	transperency -= 5
-	await get_tree().create_timer(0.1)
-	if transperency == 0:
+	anim.play("death")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "death":
 		queue_free()
+		player.book_closed()
