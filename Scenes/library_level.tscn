@@ -139,7 +139,7 @@ tile_set = SubResource("TileSet_00p7d")
 cell_quadrant_size = 32
 format = 2
 layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(262161, 131074, 0, 327697, 131074, 0, 393233, 131074, 0, 393235, 131074, 0, 327699, 131074, 0, 262163, 131074, 0, 196627, 131074, 0, 131091, 131074, 0, 327686, 131074, 0, 393222, 131074, 0, 458758, 131074, 0, 524294, 131074, 0, 589830, 131074, 0, 655366, 131074, 0)
+layer_0/tile_data = PackedInt32Array(262161, 131074, 0, 327697, 131074, 0, 393233, 131074, 0, 393235, 131074, 0, 327699, 131074, 0, 262163, 131074, 0, 196627, 131074, 0, 131091, 131074, 0, 327686, 131074, 0, 393222, 131074, 0, 458758, 131074, 0, 524294, 131074, 0, 589830, 131074, 0, 655366, 131074, 0, 458772, 65538, 3, 393236, 65538, 3, 524308, 65538, 3, 589844, 65538, 3, 655380, 65538, 3, 720916, 65538, 3)
 
 [node name="Destructible Floor" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -227,7 +227,7 @@ checkpoint = Vector2(600, 300)
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(0, -1)
 color = Color(0.243137, 0.243137, 0.266667, 1)
-polygon = PackedVector2Array(640, 257, 672, 257, 672, 353, 640, 353)
+polygon = PackedVector2Array(639, 216, 672, 216, 672, 386, 639, 386)
 
 [connection signal="body_entered" from="Book" to="." method="_on_book_body_entered"]
 [connection signal="body_entered" from="Areas/Trigger_Destructibles" to="." method="_on_trigger_destructibles_body_entered"]
