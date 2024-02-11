@@ -20,6 +20,7 @@ var DASH_SPEED = 1000.0
 
 var calc_value
 var starting_number
+var needed_number = 1
 
 
 @export var can_dash = false
@@ -108,7 +109,6 @@ func respawn():
 func _on_book_icon_button_down():
 	GlobalVar.book_visible = false
 	spell_book.visible = true
-	starting_number = rng.randi_range(0,10)
 	camera.position = Vector2(0,70)
 	prep_cutscene()
 	
@@ -119,3 +119,15 @@ func book_closed():
 	
 func activate_item(item_name):
 	get_parent().activate_item(item_name)
+
+func check_value():
+	spell_book.equation.text = ""
+	spell_book.first_number = []
+	get_parent().check_values()
+
+func prep_starting_values():
+	if needed_number > 0:
+		starting_number = rng.randi_range(0,needed_number)
+	else:
+		starting_number = rng.randi_range(needed_number, -needed_number)
+	spell_book.prep_operations()

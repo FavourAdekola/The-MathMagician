@@ -1,6 +1,7 @@
 extends Panel
 
 @onready var equation = $Control/Equation
+@onready var player = get_parent().get_parent()
 
 enum FILL {NONE, FIRST_NUMBER, SECOND_NUMBER}
 enum SYMBOL {NONE, PLUS, MINUS, MULTIPLY, DIVIDE}
@@ -13,7 +14,7 @@ var second_number = []
 
 var symbol = SYMBOL.NONE
 
-var player
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,10 +31,14 @@ func is_allow_to_write_symbol():
 	return (symbol == SYMBOL.NONE and state == FILL.FIRST_NUMBER)
 	
 func append_to_number(number):
-	if state == FILL.FIRST_NUMBER or state == FILL.NONE:
-		first_number.append(number)
-	elif state == FILL.SECOND_NUMBER:
-		second_number.append(number)
+	second_number.append(number)
+
+func prep_operations():
+	print(player.starting_number)
+	for i in str(player.starting_number):
+		first_number.append(int(i))
+		equation.text += i
+	state = FILL.FIRST_NUMBER
 
 
 
@@ -43,54 +48,63 @@ func append_to_number(number):
 ####################################
 
 func _on_number_zero_button_down():
-	if state != FILL.NONE:
+	if state == FILL.SECOND_NUMBER:
 		equation.text += "0"
 		append_to_number(0)
 
 func _on_number_one_button_down():
-	equation.text += "1"
-	append_to_number(1)
+	if state == FILL.SECOND_NUMBER:
+		equation.text += "1"
+		append_to_number(1)
 
 func _on_number_two_button_down():
-	equation.text += "2"
-	append_to_number(2)
+	if state == FILL.SECOND_NUMBER:
+		equation.text += "2"
+		append_to_number(2)
 
 func _on_number_three_button_down():
-	equation.text += "3"
-	append_to_number(3)
+	if state == FILL.SECOND_NUMBER:
+		equation.text += "3"
+		append_to_number(3)
 
 func _on_number_four_button_down():
-	equation.text += "4"
-	append_to_number(4)
+	if state == FILL.SECOND_NUMBER:
+		equation.text += "4"
+		append_to_number(4)
 
 func _on_number_five_button_down():
-	equation.text += "5"
-	append_to_number(5)
+	if state == FILL.SECOND_NUMBER:
+		equation.text += "5"
+		append_to_number(5)
 	
 
 func _on_number_six_button_down():
-	equation.text += "6"
-	append_to_number(6)
+	if state == FILL.SECOND_NUMBER:
+		equation.text += "6"
+		append_to_number(6)
 
 func _on_number_seven_button_down():
-	equation.text += "7"
-	append_to_number(7)
+	if state == FILL.SECOND_NUMBER:
+		equation.text += "7"
+		append_to_number(7)
 
 func _on_number_eight_button_down():
-	equation.text += "8"
-	append_to_number(8)
+	if state == FILL.SECOND_NUMBER:
+		equation.text += "8"
+		append_to_number(8)
 
 func _on_number_nine_button_down():
-	equation.text += "9"
-	append_to_number(9)
+	if state == FILL.SECOND_NUMBER:
+		equation.text += "9"
+		append_to_number(9)
 
 func _on_clear_button_down():
-	equation.text = ""
-	state = FILL.NONE
-	first_number = []
+	state = FILL.FIRST_NUMBER
 	second_number = []
-	symbol = SYMBOL.NONE
+	first_number = []
 	equation.text = ""
+	symbol = SYMBOL.NONE
+	prep_operations()
 
 
 #######################################
@@ -137,8 +151,8 @@ func _on_enter_button_down():
 		
 		equation.text = str(result)
 		player.calc_value = result
+		player.check_value()
 		set_state_to_first_number()
-		set_result_to_first(result)
 
 
 func _on_number_down():
@@ -175,6 +189,7 @@ func get_result(local_first_number, local_second_number):
 func set_state_to_first_number():
 	state = FILL.FIRST_NUMBER
 	symbol = SYMBOL.NONE
+	second_number = []
 
 func set_result_to_first(result):
 	if result == 0:
