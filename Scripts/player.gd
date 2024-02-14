@@ -79,7 +79,8 @@ func _physics_process(delta):
 		
 	
 	velocity.y += jump_position
-	move_and_slide()
+	if can_move:
+		move_and_slide()
 
 
 func _on_dash_timer_timeout():
@@ -130,7 +131,7 @@ func check_value():
 	parent.check_values()
 
 func prep_starting_values():
-	if GlobalVar.room == "king castle":
+	if GlobalVar.room == "king castle" or GlobalVar.room == "underground":
 		if needed_number > 0:
 			starting_number = rng.randi_range(0,needed_number)
 		else:
