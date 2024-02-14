@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://baw2nycjbf8fe"]
+[gd_scene load_steps=11 format=3 uid="uid://baw2nycjbf8fe"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ydvmm"]
 [ext_resource type="Texture2D" uid="uid://dtquwfctumla2" path="res://Assets/Sprites/player.png" id="2_3ylkg"]
@@ -6,9 +6,48 @@
 [ext_resource type="Texture2D" uid="uid://bldt26r41i64r" path="res://Assets/Sprites/Book Icon.png" id="3_hm6qw"]
 [ext_resource type="PackedScene" uid="uid://bklpyxfwqfpdy" path="res://Scenes/spellbook.tscn" id="4_hbucy"]
 
+[sub_resource type="Theme" id="Theme_80vhl"]
+default_font_size = 500
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbilt"]
 radius = 9.0
 height = 36.0
+
+[sub_resource type="Animation" id="Animation_kob7p"]
+resource_name = "wrong"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(0.258816, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y8q6f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2huot"]
+_data = {
+"RESET": SubResource("Animation_y8q6f"),
+"wrong": SubResource("Animation_kob7p")
+}
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ydvmm")
@@ -34,6 +73,17 @@ offset_left = 80.0
 offset_top = 90.0
 offset_right = 80.0
 offset_bottom = 90.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.760784, 0, 0, 1)
+offset_left = 592.222
+offset_top = 95.5556
+offset_right = 1214.22
+offset_bottom = 1460.56
+size_flags_vertical = 1
+theme = SubResource("Theme_80vhl")
+text = "X"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -68,6 +118,11 @@ one_shot = true
 [node name="DashLength" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2huot")
+}
 
 [connection signal="button_down" from="CanvasLayer/BookIcon" to="." method="_on_book_icon_button_down"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

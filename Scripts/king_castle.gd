@@ -9,6 +9,7 @@ var wizard_value
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player.parent = self
 	GlobalVar.room = "king castle"
 	player.can_dash = GlobalVar.addition
 	player.prep_cutscene()
@@ -76,4 +77,5 @@ func generate_number():
 	player.prep_starting_values()
 	
 func end_fight():
+	player.camera.position = Vector2(0,-70)
 	anim.play("end fight")

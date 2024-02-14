@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var spell_book = $CanvasLayer/OpenBook
 @onready var rng = RandomNumberGenerator.new()
 @onready var camera = $Camera2D
+@onready var parent
 
 const GRAVITY  = 1000.0
 
@@ -100,6 +101,9 @@ func fin_cutscene():
 	collision.disabled = false
 	
 func update_book():
+	if GlobalVar.room == "city maze":
+		GlobalVar.book_visible = true
+	
 	book.visible = GlobalVar.book_visible
 	book.disabled = !GlobalVar.book_visible
 	
@@ -123,11 +127,17 @@ func activate_item(item_name):
 func check_value():
 	spell_book.equation.text = ""
 	spell_book.first_number = []
-	get_parent().check_values()
+	parent.check_values()
 
 func prep_starting_values():
-	if needed_number > 0:
-		starting_number = rng.randi_range(0,needed_number)
-	else:
-		starting_number = rng.randi_range(needed_number, -needed_number)
+	if GlobalVar.room == "king castle":
+		if needed_number > 0:
+			starting_number = rng.randi_range(0,needed_number)
+		else:
+			starting_number = rng.randi_range(needed_number, -needed_number)
+	elif GlobalVar.room == "city maze":
+		starting_number = 1
 	spell_book.prep_operations()
+
+func wrong():
+	$AnimationPlayer.play("wrong")
