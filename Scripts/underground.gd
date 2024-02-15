@@ -6,7 +6,7 @@ extends Node2D
 var rock_value
 var rock_num 
 var rng = RandomNumberGenerator.new()
-
+var show_label = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,6 +35,10 @@ func _process(delta):
 			if $Barriers/Barrier3 != null:
 				$Barriers/Barrier3/Label.visible = player.spell_book.visible
 			pass
+		3:
+			if $Barriers/Barrier4 != null:
+				$Barriers/Barrier4/Label.visible = player.spell_book.visible
+			pass
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "start_scene":
@@ -43,9 +47,15 @@ func _on_animation_player_animation_finished(anim_name):
 func generate_number():
 	rock_value = rng.randi_range(-999,-1)
 	player.needed_number = rock_value
-	$Barriers/Barrier1/Label.text = str(rock_value)
-	$Barriers/Barrier2/Label.text = str(rock_value)
-	$Barriers/Barrier3/Label.text = str(rock_value)
+	if $Barriers/Barrier1 != null:
+		$Barriers/Barrier1/Label.text = str(rock_value)
+	if $Barriers/Barrier2 != null:
+		$Barriers/Barrier2/Label.text = str(rock_value)
+	if $Barriers/Barrier3 != null:
+		$Barriers/Barrier3/Label.text = str(rock_value)
+	if $Barriers/Barrier4 != null:
+		$Barriers/Barrier4/Label.text = str(rock_value)
+		
 	player.prep_starting_values()
 
 func check_values():
@@ -61,9 +71,13 @@ func check_values():
 			2:
 				$Barriers/Barrier3.queue_free()
 				pass
+			3:
+				$Barriers/Barrier4.queue_free()
+				pass
 		player.book_closed()
-		player.spell_book._on_clear_button_down()
 		generate_number()
+		player._on_book_icon_button_down()
+		player.book_closed()
 	else:
 		player.wrong()
 		generate_number()
@@ -82,3 +96,25 @@ func _on_interact2_body_entered(body):
 func _on_interact3_body_entered(body):
 	if body.name == "Player":
 		rock_num = 2
+
+
+func _on_area_2d_body_entered(body):
+	if body.name == "Player":
+		rock_num = 3
+
+
+func _on_send_back_body_entered(body):
+	if body.name == "Player":
+		player.global_position = Vector2(2188,388)
+
+
+func _on_rune_body_entered(body):
+	if body.name == "Player":
+		$Rune.queue_free()
+		GlobalVar.division = true
+		GlobalVar.multiplication = true
+
+
+func next_stage(body):
+	if body.name == "Player":
+		get_tree().change_scene_to_file("res://Scenes/snake fight.tscn")

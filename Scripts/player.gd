@@ -119,6 +119,7 @@ func _on_book_icon_button_down():
 	
 func book_closed():
 	GlobalVar.book_visible = true
+	spell_book._on_clear_button_down()
 	spell_book.visible = false
 	fin_cutscene()
 	

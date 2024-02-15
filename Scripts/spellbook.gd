@@ -34,7 +34,6 @@ func append_to_number(number):
 	second_number.append(number)
 
 func prep_operations():
-	print(player.starting_number)
 	for i in str(player.starting_number):
 		first_number.append(int(i))
 		equation.text += i
