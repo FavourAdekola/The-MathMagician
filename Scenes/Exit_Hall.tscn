@@ -1,13 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://c5w6fd664qlod"]
 
 [ext_resource type="Script" path="res://Scripts/exit_hall.gd" id="1_6c2vr"]
+[ext_resource type="TileSet" uid="uid://ccy7s0fy0b0f5" path="res://Scenes/TileSet.tres" id="2_ishbc"]
 [ext_resource type="PackedScene" uid="uid://baw2nycjbf8fe" path="res://Scenes/player.tscn" id="3_hsssb"]
 [ext_resource type="PackedScene" uid="uid://dsjvlk4bve3yv" path="res://Scenes/slime.tscn" id="5_nuchc"]
-
-[sub_resource type="TileSet" id="TileSet_n3tg7"]
-tile_offset_axis = 1
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpt26"]
 size = Vector2(336, 123)
@@ -42,7 +38,7 @@ y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, 1280)
 scale = Vector2(1.5, 1.5)
-tile_set = SubResource("TileSet_n3tg7")
+tile_set = ExtResource("2_ishbc")
 cell_quadrant_size = 32
 format = 2
 layer_0/y_sort_enabled = true
@@ -54,7 +50,7 @@ y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, 1280)
 scale = Vector2(1.5, 1.5)
-tile_set = SubResource("TileSet_n3tg7")
+tile_set = ExtResource("2_ishbc")
 cell_quadrant_size = 32
 collision_visibility_mode = 1
 format = 2

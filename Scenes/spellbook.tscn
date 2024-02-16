@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bklpyxfwqfpdy"]
+[gd_scene load_steps=20 format=3 uid="uid://bklpyxfwqfpdy"]
 
 [ext_resource type="Texture2D" uid="uid://dmlmi1h6tkaha" path="res://Assets/Sprites/Open Book.png" id="1_50wj6"]
 [ext_resource type="Script" path="res://Scripts/spellbook.gd" id="1_f62ck"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://b8yontdancgf4" path="res://Assets/Sprites/DivisionSign.png" id="13_5rq3a"]
 [ext_resource type="Texture2D" uid="uid://d0k7khxwenv7r" path="res://Assets/Sprites/AdditionSign.png" id="14_j4g36"]
 [ext_resource type="Texture2D" uid="uid://cxlfnxe3qh78h" path="res://Assets/Sprites/SubtractionSign.png" id="15_kufni"]
-[ext_resource type="Texture2D" uid="uid://pnq4116d3nkm" path="res://Assets/Sprites/Key.png" id="16_hcjod"]
 [ext_resource type="Texture2D" uid="uid://ctn0a51odma7r" path="res://Assets/Sprites/slab.png" id="17_ncn8t"]
 
 [sub_resource type="Theme" id="Theme_a8p0n"]
@@ -54,9 +53,9 @@ texture = ExtResource("1_50wj6")
 [node name="Numbers" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 662.0
-offset_top = 509.0
+offset_top = 487.0
 offset_right = 662.0
-offset_bottom = 509.0
+offset_bottom = 487.0
 
 [node name="NumberZero" type="TextureButton" parent="Numbers"]
 texture_filter = 1
@@ -161,18 +160,18 @@ texture_normal = ExtResource("11_pb2yx")
 [node name="Clear" type="Button" parent="Numbers"]
 layout_mode = 0
 offset_left = 117.0
-offset_top = 103.0
+offset_top = 138.0
 offset_right = 186.0
-offset_bottom = 139.0
+offset_bottom = 174.0
 theme = SubResource("Theme_a8p0n")
 text = "CLR"
 
 [node name="Enter" type="Button" parent="Numbers"]
 layout_mode = 0
 offset_left = 5.0
-offset_top = 103.0
+offset_top = 138.0
 offset_right = 76.0
-offset_bottom = 139.0
+offset_bottom = 174.0
 theme = SubResource("Theme_a8p0n")
 text = "ENTER"
 
@@ -232,23 +231,6 @@ offset_bottom = 13.0
 theme = SubResource("Theme_a8p0n")
 text = "CLOSE"
 
-[node name="Items" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 52.0
-offset_top = 86.0
-offset_right = 52.0
-offset_bottom = 86.0
-
-[node name="Key" type="TextureButton" parent="Items"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 745.0
-offset_top = 335.0
-offset_right = 777.0
-offset_bottom = 367.0
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("16_hcjod")
-
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 52.0
@@ -282,12 +264,12 @@ theme = SubResource("Theme_gkvwc")
 [connection signal="button_down" from="Numbers/NumberTwo" to="." method="_on_number_two_button_down"]
 [connection signal="button_down" from="Numbers/NumberThree" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberThree" to="." method="_on_number_three_button_down"]
-[connection signal="button_down" from="Numbers/NumberFour" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberFour" to="." method="_on_number_four_button_down"]
-[connection signal="button_down" from="Numbers/NumberFive" to="." method="_on_number_five_button_down"]
+[connection signal="button_down" from="Numbers/NumberFour" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberFive" to="." method="_on_number_down"]
-[connection signal="button_down" from="Numbers/NumberSix" to="." method="_on_number_down"]
+[connection signal="button_down" from="Numbers/NumberFive" to="." method="_on_number_five_button_down"]
 [connection signal="button_down" from="Numbers/NumberSix" to="." method="_on_number_six_button_down"]
+[connection signal="button_down" from="Numbers/NumberSix" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberSeven" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberSeven" to="." method="_on_number_seven_button_down"]
 [connection signal="button_down" from="Numbers/NumberEight" to="." method="_on_number_down"]
@@ -301,4 +283,3 @@ theme = SubResource("Theme_gkvwc")
 [connection signal="button_down" from="Operators/DivisionSign" to="." method="_on_division_sign_button_down"]
 [connection signal="button_down" from="Operators/MultiplicationSign" to="." method="_on_multiplication_sign_button_down"]
 [connection signal="button_down" from="Operators/Close" to="." method="_on_close_button_down"]
-[connection signal="button_down" from="Items/Key" to="." method="_on_key_button_down"]
