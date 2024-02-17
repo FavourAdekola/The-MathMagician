@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://l0ivw6xefy5i"]
+[gd_scene load_steps=19 format=3 uid="uid://l0ivw6xefy5i"]
 
 [ext_resource type="Texture2D" uid="uid://dm6wp5qr0pj5f" path="res://Assets/Sprites/Castle Floor.png" id="1_7o7ja"]
 [ext_resource type="Script" path="res://Scripts/starting_level.gd" id="1_7rymu"]
@@ -84,11 +84,85 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../CanvasModulate:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Control/Dialogue:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["
+"]
+}
+
+[sub_resource type="Animation" id="Animation_7hc02"]
+resource_name = "dialogue"
+length = 11.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Control/Dialogue:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5, 3, 4, 6, 6.5, 7.6, 10.5, 11),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": ["Magician:", "Magician: I need to talk to the king.", "Magician: I need to talk to the king.", "Magician:", "Magician: He may have information
+ as to what is going on.", "Magician: He may have information
+ as to what is going on.", "Magician:", "Magician: First I need to find my spellbook.
+It is the only way to open the gate.", "Magician: First I need to find my spellbook.
+It is the only way to open the gate.", ""]
+}
+
+[sub_resource type="Animation" id="Animation_56csw"]
+resource_name = "start_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Control/Dialogue:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vdf47"]
 _data = {
 "Door Opens": SubResource("Animation_pikps"),
-"RESET": SubResource("Animation_w15nv")
+"RESET": SubResource("Animation_w15nv"),
+"dialogue": SubResource("Animation_7hc02"),
+"start_scene": SubResource("Animation_56csw")
 }
 
 [node name="Starting Level" type="Node2D"]
@@ -198,6 +272,14 @@ position = Vector2(239.333, 62)
 position = Vector2(6, -17.6667)
 shape = SubResource("RectangleShape2D_j8ftg")
 
+[node name="Label" type="Label" parent="Main Room"]
+offset_left = 237.333
+offset_top = 80.6667
+offset_right = 277.333
+offset_bottom = 106.667
+text = "2
+"
+
 [node name="Player" parent="." instance=ExtResource("5_ibpnf")]
 position = Vector2(361, 838)
 scale = Vector2(0.75, 0.75)
@@ -208,8 +290,53 @@ libraries = {
 "": SubResource("AnimationLibrary_vdf47")
 }
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Dialogue" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 768.0
+offset_right = 498.0
+offset_bottom = 794.0
+text = "
+"
+
+[node name="PopupPanel" type="PopupPanel" parent="Control"]
+initial_position = 2
+size = Vector2i(223, 200)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PopupPanel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 219.0
+offset_bottom = 196.0
+
+[node name="Label" type="Label" parent="Control/PopupPanel/VBoxContainer"]
+layout_mode = 2
+text = "Task 1: Find your Spellbook.
+
+Press WASD to Move"
+horizontal_alignment = 1
+
+[node name="Container" type="Control" parent="Control/PopupPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Control/PopupPanel/VBoxContainer"]
+self_modulate = Color(0.576471, 0, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Got it!"
+
 [connection signal="body_entered" from="Main Room/Entrance" to="." method="_on_entrance_body_entered"]
 [connection signal="body_entered" from="Main Room/BookInteraction" to="." method="_on_book_interaction_body_entered"]
 [connection signal="body_exited" from="Main Room/BookInteraction" to="." method="_on_book_interaction_body_exited"]
 [connection signal="body_entered" from="Main Room/ExitDoor" to="." method="_on_exit_door_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Control/PopupPanel/VBoxContainer/Button" to="." method="_on_button_pressed"]

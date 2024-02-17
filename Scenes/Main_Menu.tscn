@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://biomten5b6jp4"]
+
+[ext_resource type="Script" path="res://Scripts/Main_Menu.gd" id="1_1syjl"]
+[ext_resource type="Texture2D" uid="uid://c731cnavgveoj" path="res://Assets/Pictures/Full Art.png" id="1_p6svb"]
+
+[sub_resource type="Animation" id="Animation_0tk64"]
+resource_name = "start_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y23rn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_di3c2"]
+resource_name = "change_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_05upd"]
+_data = {
+"RESET": SubResource("Animation_y23rn"),
+"change_scene": SubResource("Animation_di3c2"),
+"start_scene": SubResource("Animation_0tk64")
+}
+
+[sub_resource type="Theme" id="Theme_rvsac"]
+default_font_size = 108
+
+[sub_resource type="Theme" id="Theme_a3pqp"]
+default_font_size = 30
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1syjl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p6svb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_05upd")
+}
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 689.0
+offset_top = 1.0
+offset_right = 1185.0
+offset_bottom = 303.0
+theme = SubResource("Theme_rvsac")
+text = "The Math
+ Magician"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_top = -84.0
+offset_right = 1281.0
+offset_bottom = 722.0
+theme = SubResource("Theme_a3pqp")
+text = "
+
+
+
+
+
+
+
+
+
+
+
+
+
+Click to Start"
+flat = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

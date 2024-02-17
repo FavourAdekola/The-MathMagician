@@ -132,12 +132,12 @@ func check_value():
 	parent.check_values()
 
 func prep_starting_values():
-	if GlobalVar.room == "king castle" or GlobalVar.room == "underground":
+	if GlobalVar.room == "king castle" or GlobalVar.room == "underground" or GlobalVar.room == "exit hall":
 		if needed_number > 0:
 			starting_number = rng.randi_range(0,needed_number)
 		else:
 			starting_number = rng.randi_range(needed_number, -needed_number)
-	elif GlobalVar.room == "city maze":
+	elif GlobalVar.room == "city maze" or GlobalVar.room == "starting level":
 		starting_number = 1
 	spell_book.prep_operations()
 

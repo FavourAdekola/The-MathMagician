@@ -7,7 +7,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player.parent = self
 	GlobalVar.room = "library level"
+	$AnimationPlayer.play("start_scene")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,7 +18,7 @@ func _physics_process(delta):
 		player.velocity = Vector2.ZERO
 		player.prep_cutscene()
 		broken_floor.visible = false
-		player.position.y += 2
+		player.position.y += 4
 	else: 
 		player.fin_cutscene()
 	if player.in_pit and !player.dashing:
@@ -35,7 +37,9 @@ func _on_book_body_entered(body):
 		GlobalVar.book_visible = true
 		GlobalVar.addition = true
 		player.can_dash = true
+		$Control/PopupPanel.show()
 		$Book.queue_free()
+		
 
 
 func _on_checkpoint_body_entered(body):
@@ -55,3 +59,8 @@ func _on_fall_pit_body_exit(body):
 func _on_previous_room_body_entered(body):
 	if body.name == "Player":
 		get_tree().change_scene_to_file("res://Scenes/starting_level.tscn")
+
+
+func _on_button_pressed():
+	$Control/PopupPanel.hide()
+	player.fin_cutscene()
