@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bklpyxfwqfpdy"]
+[gd_scene load_steps=21 format=3 uid="uid://bklpyxfwqfpdy"]
 
 [ext_resource type="Texture2D" uid="uid://dmlmi1h6tkaha" path="res://Assets/Sprites/Open Book.png" id="1_50wj6"]
 [ext_resource type="Script" path="res://Scripts/spellbook.gd" id="1_f62ck"]
@@ -23,6 +23,9 @@ default_font_size = 20
 
 [sub_resource type="Theme" id="Theme_gkvwc"]
 default_font_size = 36
+
+[sub_resource type="Theme" id="Theme_kt7gp"]
+default_font_size = 49
 
 [node name="Panel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -256,10 +259,19 @@ offset_right = 386.0
 offset_bottom = 243.0
 theme = SubResource("Theme_gkvwc")
 
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 876.0
+offset_top = 264.0
+offset_right = 932.0
+offset_bottom = 335.0
+theme = SubResource("Theme_kt7gp")
+
 [connection signal="button_down" from="Numbers/NumberZero" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberZero" to="." method="_on_number_zero_button_down"]
-[connection signal="button_down" from="Numbers/NumberOne" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberOne" to="." method="_on_number_one_button_down"]
+[connection signal="button_down" from="Numbers/NumberOne" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberTwo" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberTwo" to="." method="_on_number_two_button_down"]
 [connection signal="button_down" from="Numbers/NumberThree" to="." method="_on_number_down"]
@@ -270,10 +282,10 @@ theme = SubResource("Theme_gkvwc")
 [connection signal="button_down" from="Numbers/NumberFive" to="." method="_on_number_five_button_down"]
 [connection signal="button_down" from="Numbers/NumberSix" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberSix" to="." method="_on_number_six_button_down"]
-[connection signal="button_down" from="Numbers/NumberSeven" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberSeven" to="." method="_on_number_seven_button_down"]
-[connection signal="button_down" from="Numbers/NumberEight" to="." method="_on_number_eight_button_down"]
+[connection signal="button_down" from="Numbers/NumberSeven" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberEight" to="." method="_on_number_down"]
+[connection signal="button_down" from="Numbers/NumberEight" to="." method="_on_number_eight_button_down"]
 [connection signal="button_down" from="Numbers/NumberNine" to="." method="_on_number_down"]
 [connection signal="button_down" from="Numbers/NumberNine" to="." method="_on_number_nine_button_down"]
 [connection signal="button_down" from="Numbers/Clear" to="." method="_on_clear_button_down"]

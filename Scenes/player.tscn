@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://baw2nycjbf8fe"]
+[gd_scene load_steps=12 format=3 uid="uid://baw2nycjbf8fe"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ydvmm"]
 [ext_resource type="Texture2D" uid="uid://dtquwfctumla2" path="res://Assets/Sprites/player.png" id="2_3ylkg"]
+[ext_resource type="PackedScene" uid="uid://b45tfrqkurxir" path="res://Scenes/ghost.tscn" id="2_odn7x"]
 [ext_resource type="Texture2D" uid="uid://dmlmi1h6tkaha" path="res://Assets/Sprites/Open Book.png" id="3_008lw"]
 [ext_resource type="Texture2D" uid="uid://bldt26r41i64r" path="res://Assets/Sprites/Book Icon.png" id="3_hm6qw"]
 [ext_resource type="PackedScene" uid="uid://bklpyxfwqfpdy" path="res://Scenes/spellbook.tscn" id="4_hbucy"]
@@ -51,6 +52,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ydvmm")
+ghost = ExtResource("2_odn7x")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(0.9, 0.9)
@@ -97,16 +99,6 @@ position = Vector2(0, 25)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tbilt")
 
-[node name="State Machine" type="Node" parent="."]
-
-[node name="Idle" type="Node" parent="State Machine"]
-
-[node name="Move" type="Node" parent="State Machine"]
-
-[node name="Jump" type="Node" parent="State Machine"]
-
-[node name="Fall" type="Node" parent="State Machine"]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
@@ -124,6 +116,10 @@ libraries = {
 "": SubResource("AnimationLibrary_2huot")
 }
 
+[node name="GhostTimer" type="Timer" parent="."]
+wait_time = 0.05
+
 [connection signal="button_down" from="CanvasLayer/BookIcon" to="." method="_on_book_icon_button_down"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashLength" to="." method="_on_dash_length_timeout"]
+[connection signal="timeout" from="GhostTimer" to="." method="_on_ghost_timer_timeout"]

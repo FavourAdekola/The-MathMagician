@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalVar="*res://Scripts/global_variables.gd"
+MusicControl="*res://Scenes/music_control.tscn"
 
 [display]
 

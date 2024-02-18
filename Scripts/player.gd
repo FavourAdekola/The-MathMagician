@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var dash_time = $DashTimer
 @onready var dash_dur = $DashLength
+@onready var ghost_timer = $GhostTimer
 @onready var collision = $CollisionShape2D
 @onready var book = $CanvasLayer/BookIcon
 @onready var spell_book = $CanvasLayer/OpenBook
@@ -14,6 +15,7 @@ const GRAVITY  = 1000.0
 
 @export var direction = Vector2.ZERO
 @export var checkpoint = Vector2.ZERO
+@export var ghost : PackedScene
 var dash_dir = Vector2(1,0)
 var SPEED = 200.0
 var JUMP_VELOCITY = -400.0
@@ -71,6 +73,7 @@ func _physics_process(delta):
 		dashing = true
 		can_dash = false
 		dash_dur.start()
+		ghost_timer.start()
 	
 	if dashing:
 		velocity = dash_dir.normalized() * DASH_SPEED
@@ -91,15 +94,14 @@ func _on_dash_timer_timeout():
 func _on_dash_length_timeout():
 	dashing = false
 	dash_time.start()
+	ghost_timer.stop()
 	
 func prep_cutscene():
 	can_move = false
 	velocity = Vector2.ZERO
-	collision.disabled = true
 
 func fin_cutscene():
 	can_move = true
-	collision.disabled = false
 	
 func update_book():
 	if GlobalVar.room == "city maze":
@@ -132,14 +134,26 @@ func check_value():
 	parent.check_values()
 
 func prep_starting_values():
-	if GlobalVar.room == "king castle" or GlobalVar.room == "underground" or GlobalVar.room == "exit hall":
+	if GlobalVar.room == "king castle" or GlobalVar.room == "underground" or GlobalVar.room == "exit hall" or GlobalVar.room == "final room":
 		if needed_number > 0:
-			starting_number = rng.randi_range(0,needed_number)
+			starting_number = rng.randi_range(1,needed_number)
 		else:
-			starting_number = rng.randi_range(needed_number, -needed_number)
+			starting_number = rng.randi_range(needed_number, 1)
+			while starting_number == 0:
+				starting_number = rng.randi_range(needed_number, -needed_number)
 	elif GlobalVar.room == "city maze" or GlobalVar.room == "starting level":
 		starting_number = 1
 	spell_book.prep_operations()
 
 func wrong():
 	$AnimationPlayer.play("wrong")
+	
+func add_ghost():
+	var ghost_node = ghost.instantiate()
+	ghost_node.position = position
+	ghost_node.scale = sprite.scale*scale
+	ghost_node.flip_h = sprite.flip_h
+	get_tree().current_scene.add_child(ghost_node)
+
+func _on_ghost_timer_timeout():
+	add_ghost()

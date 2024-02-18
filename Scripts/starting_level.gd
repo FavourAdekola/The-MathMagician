@@ -1,6 +1,7 @@
 extends Node2D
 @onready var player = $Player
 var gate_value = 2
+var shown_hint = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.parent = self
@@ -18,6 +19,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$"Main Room/Label".visible = player.spell_book.visible
+	if !shown_hint:
+		$"Control/SpellBook Instructions".visible = player.spell_book.visible
 	
 func check_values():
 	if player.calc_value == gate_value:
@@ -61,4 +64,11 @@ func _on_exit_door_body_entered(body):
 
 func _on_button_pressed():
 	$Control/PopupPanel.hide()
+	$"Control/SpellBook Instructions".hide()
 	player.fin_cutscene()
+
+
+func _on_spell_book_instructions_visibility_changed():
+	if player.spell_book.visible:
+		shown_hint = true
+		player.prep_cutscene()

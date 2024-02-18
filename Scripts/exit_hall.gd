@@ -6,8 +6,8 @@ var slime_value = 12
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	generate_number()
-	$AnimationPlayer.play("start_scene")
 	player.prep_cutscene()
+	$AnimationPlayer.play("start_scene")
 	GlobalVar.book_visible = true
 	GlobalVar.addition = true
 	player.parent = self
@@ -53,3 +53,5 @@ func generate_number():
 func _on_animation_player_animation_started(anim_name):
 	if anim_name == "start_scene":
 		player.fin_cutscene()
+		
+	

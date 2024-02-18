@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bysrjnjvtpdu1"]
+
+[ext_resource type="Script" path="res://Scripts/music_control.gd" id="1_m731p"]
+[ext_resource type="AudioStream" uid="uid://b0wb836pag031" path="res://Assets/Music/LOOPFavourGameOST1.wav" id="2_hnvax"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_m731p")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hnvax")
+volume_db = -16.37
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

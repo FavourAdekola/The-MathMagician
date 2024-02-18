@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ng1wdpdit2pm"]
+[gd_scene load_steps=25 format=3 uid="uid://ng1wdpdit2pm"]
 
 [ext_resource type="Texture2D" uid="uid://ctn0a51odma7r" path="res://Assets/Sprites/slab.png" id="1_k5a56"]
 [ext_resource type="Script" path="res://Scripts/king_castle.gd" id="1_pry2f"]
@@ -532,6 +532,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(330, 125)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasModulate:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b16qq"]
 _data = {
@@ -546,6 +558,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77yar"]
 size = Vector2(20, 36)
+
+[sub_resource type="Theme" id="Theme_0n6f5"]
+default_font_size = 30
 
 [node name="Castle" type="Node2D"]
 script = ExtResource("1_pry2f")
@@ -669,14 +684,82 @@ scale = Vector2(1.8, 1.8)
 texture = ExtResource("8_irbjb")
 
 [node name="Value_Label" type="Label" parent="BackDrop"]
+self_modulate = Color(0.588235, 0, 0, 1)
 offset_left = 264.0
 offset_top = 571.0
 offset_right = 319.0
 offset_bottom = 597.0
+theme = SubResource("Theme_0n6f5")
+horizontal_alignment = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NextTask" type="PopupPanel" parent="Control"]
+initial_position = 2
+size = Vector2i(233, 203)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/NextTask"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 290.0
+offset_bottom = 199.0
+
+[node name="Label" type="Label" parent="Control/NextTask/VBoxContainer"]
+layout_mode = 2
+text = "Task 4: Best the Wizard in a math off. 
+
+"
+horizontal_alignment = 1
+
+[node name="Container" type="Control" parent="Control/NextTask/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Control/NextTask/VBoxContainer"]
+self_modulate = Color(0.576471, 0, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Got it!"
+
+[node name="NewRune" type="PopupPanel" parent="Control"]
+initial_position = 2
+size = Vector2i(250, 203)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/NewRune"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 246.0
+offset_bottom = 199.0
+
+[node name="Label" type="Label" parent="Control/NewRune/VBoxContainer"]
+layout_mode = 2
+text = "You have obtained the
+rune of subtraction.
+The subtraction operation
+can now be used in your spells.
+
+"
+horizontal_alignment = 1
+
+[node name="Container" type="Control" parent="Control/NewRune/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Control/NewRune/VBoxContainer"]
+self_modulate = Color(0.576471, 0, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Got it!"
+
 [connection signal="body_entered" from="Areas/Exit" to="." method="_on_exit_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Control/NextTask/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/NewRune/VBoxContainer/Button" to="." method="_on_last_button_pressed"]
 
 [editable path="Player"]

@@ -113,8 +113,15 @@ func _on_rune_body_entered(body):
 		$Rune.queue_free()
 		GlobalVar.division = true
 		GlobalVar.multiplication = true
+		player.prep_cutscene()
+		$NextTask.show()
 
 
 func next_stage(body):
 	if body.name == "Player":
 		get_tree().change_scene_to_file("res://Scenes/snake fight.tscn")
+
+
+func _on_button_pressed():
+	$NextTask.hide()
+	player.fin_cuts

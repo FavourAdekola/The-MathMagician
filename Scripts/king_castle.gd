@@ -49,11 +49,12 @@ func _on_animation_player_animation_finished(anim_name):
 	elif anim_name == "Wizard Entrance":
 		$BackDrop.visible = true
 		player._on_book_icon_button_down()
+		$Control/NextTask.show()
 	elif anim_name == "end fight":
 		anim.play("end dialogue")
 	elif anim_name == "end dialogue":
 		GlobalVar.subtraction = true
-		anim.play("exit_scene")
+		$Control/NewRune.show()
 	elif anim_name == "exit_scene":
 		get_tree().change_scene_to_file("res://Scenes/City_Maze.tscn")
 		
@@ -66,6 +67,8 @@ func check_values():
 		wizard_health -= 1
 		generate_number()
 	else:
+		player.wrong()
+		await(get_tree().create_timer(0.2).timeout)
 		get_tree().reload_current_scene()
 	if wizard_health == 0:
 		end_fight()
@@ -79,3 +82,13 @@ func generate_number():
 func end_fight():
 	player.camera.position = Vector2(0,-70)
 	anim.play("end fight")
+
+
+func _on_button_pressed():
+	$Control/NextTask.hide()
+	
+
+
+func _on_last_button_pressed():
+	$Control/NewRune.hide()
+	anim.play("exit_scene")

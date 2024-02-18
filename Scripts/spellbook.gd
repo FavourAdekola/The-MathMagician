@@ -2,6 +2,7 @@ extends Panel
 
 @onready var equation = $Control/Equation
 @onready var player = get_parent().get_parent()
+@onready var rng = RandomNumberGenerator.new()
 
 enum FILL {NONE, FIRST_NUMBER, SECOND_NUMBER}
 enum SYMBOL {NONE, PLUS, MINUS, MULTIPLY, DIVIDE}
@@ -26,6 +27,11 @@ func _process(delta):
 	$Operators/SubtractionSign.visible = GlobalVar.subtraction
 	$Operators/DivisionSign.visible = GlobalVar.division
 	$Operators/MultiplicationSign.visible = GlobalVar.multiplication
+	
+	if GlobalVar.room == "final room":
+		$Label.show()
+		$Label.text = str(int(player.parent.get_node("Timer").time_left))
+
 
 func is_allow_to_write_symbol():
 	return (symbol == SYMBOL.NONE and state == FILL.FIRST_NUMBER)
@@ -34,14 +40,68 @@ func append_to_number(number):
 	second_number.append(number)
 
 func prep_operations():
+	
+	if GlobalVar.room == "final room":
+		state = FILL.SECOND_NUMBER
+		if symbol == SYMBOL.MINUS:
+			while player.starting_number < player.needed_number:
+				if player.needed_number > 0:
+					player.starting_number = rng.randi_range(1,player.needed_number)
+				else:
+					player.starting_number = rng.randi_range(player.needed_number, 1)
+		if symbol == SYMBOL.PLUS:
+			while player.starting_number > player.needed_number:
+				if player.needed_number > 0:
+					player.starting_number = rng.randi_range(1,player.needed_number)
+				else:
+					player.starting_number = rng.randi_range(player.needed_number, 1)
+		if symbol == SYMBOL.MULTIPLY:
+			if player.starting_number == 0:
+				player.starting_number = 1
+			while is_prime(player.needed_number) or player.needed_number % player.starting_number != 0:
+				player.needed_number = rng.randi_range(1,9999)
+				player.parent.boss_value = player.needed_number
+				var divisor = rng.randi_range(2,999)
+				print(divisor)
+				if divisor != 0:
+					print(player.needed_number)
+					player.starting_number = player.needed_number/divisor
+		if symbol == SYMBOL.DIVIDE:
+			player.starting_number = player.needed_number*rng.randi_range(1,99)
+					
+	else:
+		state = FILL.FIRST_NUMBER
 	for i in str(player.starting_number):
 		first_number.append(int(i))
 		equation.text += i
-	state = FILL.FIRST_NUMBER
+	if GlobalVar.room == "final room":
+		print(symbol)
+		match symbol:
+			SYMBOL.PLUS:
+				equation.text += "+"
+			SYMBOL.MINUS:
+				equation.text += "-"
+			SYMBOL.DIVIDE:
+				equation.text += "÷"
+			SYMBOL.MULTIPLY:
+				equation.text += "x"
+		
 
 
 
-
+func is_prime(number):
+	if number < 2:
+		return false
+	if number == 2:
+		return true
+	if number % 2 == 0:
+		return false
+	var i = 3
+	for divisor in range(2, int(sqrt(number)) + 1):
+		if number % divisor == 0:
+			return false
+	return true
+		
 ####################################
 #          NUMBER BUTTONS          #
 ####################################
@@ -98,11 +158,16 @@ func _on_number_nine_button_down():
 		append_to_number(9)
 
 func _on_clear_button_down():
-	state = FILL.FIRST_NUMBER
 	second_number = []
 	first_number = []
 	equation.text = ""
-	symbol = SYMBOL.NONE
+	if GlobalVar.room != "final room":
+		state = FILL.FIRST_NUMBER
+		symbol = SYMBOL.NONE
+	else:
+		state = FILL.SECOND_NUMBER
+		symbol =  player.parent.temp_save
+		
 	prep_operations()
 
 
@@ -182,7 +247,8 @@ func get_result(local_first_number, local_second_number):
 		SYMBOL.MULTIPLY:
 			return local_first_number * local_second_number
 		SYMBOL.DIVIDE:
-			return local_first_number / local_second_number
+			if local_second_number != 0:
+				return local_first_number / local_second_number
 	return 0
 
 func set_state_to_first_number():
