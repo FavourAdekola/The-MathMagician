@@ -13,6 +13,7 @@ func _ready():
 	player.parent = self
 	GlobalVar.book_visible = true
 	GlobalVar.subtraction = true
+	GlobalVar.addition = true
 	GlobalVar.room = "underground"
 	player.prep_cutscene()
 	anim.play("start_scene")
@@ -124,4 +125,4 @@ func next_stage(body):
 
 func _on_button_pressed():
 	$NextTask.hide()
-	player.fin_cuts
+	player.fin_cutscene()

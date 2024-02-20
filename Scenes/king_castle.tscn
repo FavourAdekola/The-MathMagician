@@ -616,7 +616,7 @@ scale = Vector2(0.5, 0.5)
 [node name="Sprite2D" parent="Player" index="1"]
 flip_h = false
 
-[node name="Camera2D" parent="Player" index="4"]
+[node name="Camera2D" parent="Player" index="3"]
 zoom = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

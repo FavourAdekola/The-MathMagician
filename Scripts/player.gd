@@ -42,8 +42,9 @@ func _ready():
 	spell_book.player = self
 
 func _physics_process(delta):
-	update_book()
+	
 	if can_move:
+		update_book()
 		$Camera2D.position = 100*direction.normalized()
 		direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -69,7 +70,7 @@ func _physics_process(delta):
 #		jumping = true
 #		print(velocity.y)
 
-	if Input.is_action_just_pressed("dash") and can_dash:
+	if Input.is_action_just_pressed("dash") and can_dash and can_move:
 		dashing = true
 		can_dash = false
 		dash_dur.start()
@@ -99,14 +100,14 @@ func _on_dash_length_timeout():
 func prep_cutscene():
 	can_move = false
 	velocity = Vector2.ZERO
+	$CanvasLayer/BookIcon.visible = false
 
 func fin_cutscene():
 	can_move = true
+	if GlobalVar.addition:
+		$CanvasLayer/BookIcon.visible = true
 	
 func update_book():
-	if GlobalVar.room == "city maze":
-		GlobalVar.book_visible = true
-	
 	book.visible = GlobalVar.book_visible
 	book.disabled = !GlobalVar.book_visible
 	
@@ -116,7 +117,8 @@ func respawn():
 func _on_book_icon_button_down():
 	GlobalVar.book_visible = false
 	spell_book.visible = true
-	camera.position = Vector2(0,70)
+	if GlobalVar.room != "final room":
+		camera.position = Vector2(0,70)
 	prep_cutscene()
 	
 func book_closed():

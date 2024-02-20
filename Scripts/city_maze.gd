@@ -14,6 +14,8 @@ func _ready():
 		$Control/NextTask.show()
 		player.visible = true
 		$PlaceHolder.queue_free()
+		GlobalVar.addition = true
+		GlobalVar.book_visible = true
 	else:
 		player.global_position = Vector2(1395,1480)
 		player.prep_cutscene()

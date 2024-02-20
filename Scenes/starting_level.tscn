@@ -362,6 +362,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Got it!"
 
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -117.0
+offset_top = 223.0
+offset_bottom = 511.0
+color = Color(0, 0, 0, 1)
+
 [connection signal="body_entered" from="Main Room/Entrance" to="." method="_on_entrance_body_entered"]
 [connection signal="body_entered" from="Main Room/BookInteraction" to="." method="_on_book_interaction_body_entered"]
 [connection signal="body_exited" from="Main Room/BookInteraction" to="." method="_on_book_interaction_body_exited"]

@@ -36,6 +36,10 @@ func _physics_process(delta):
 		player.respawn()
 	if $AnimationPlayer.current_animation == "dialogue":
 		player.camera.position = ($StaticBody2D.global_position - player.global_position).normalized() * 70
+	if player.spell_book.visible:
+		$StaticBody2D/Label.show()
+	else:
+		$StaticBody2D/Label.hide()
 
 
 func _on_checkpoint_body_entered(body):
@@ -54,6 +58,7 @@ func _on_fall_pit_body_exit(body):
 		
 func check_values():
 	if player.calc_value == boss_value:
+		player.book_closed()
 		player.prep_cutscene()
 		$Timer.stop()
 		match boss_stage:
@@ -65,7 +70,7 @@ func check_values():
 				$AnimationPlayer.play("change_three")
 			4:
 				$AnimationPlayer.play("final_dialogue")
-				$StaticBody2D/Label.hide()
+				
 		generate_number()
 	else:
 		player.wrong()
@@ -90,8 +95,13 @@ func generate_number():
 			timer = 60
 			boss_value = abs(boss_value)
 	temp_save = player.spell_book.symbol
-	player.needed_number = boss_value
+	if player.spell_book.symbol != SYMBOL.DIVIDE:
+		player.needed_number = boss_value
+	else:
+		boss_value = rng.randi_range(1,99)
+		player.needed_number = boss_value
 	player.prep_starting_values() 
+	player.spell_book._on_clear_button_down()
 	$StaticBody2D/Label.text = str(player.needed_number)
 	
 
@@ -110,9 +120,11 @@ func _on_animation_player_animation_finished(anim_name):
 		boss_stage = 2
 	elif anim_name == "change_two":
 		boss_stage = 3
+		player.fin_cutscene()
 		print("Moving to third location")
 	elif anim_name == "change_three":
 		boss_stage = 4
+		player.fin_cutscene()
 		print("FINISHED")
 	elif anim_name == "final_dialogue":
 		$AnimationPlayer.play("change_scene")
@@ -126,6 +138,7 @@ func _on_interact_body_entered(body):
 			$AnimationPlayer.play("dialogue")
 		else:
 			$Timer.start(timer)
+			player.book_closed()
 			player._on_book_icon_button_down()
 
 
