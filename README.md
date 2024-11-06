@@ -1,36 +1,3 @@
-# To-Do List
-
-## Art (Everything is base 32x32, but Assets varying in size can break the resolution  Buildings and Structures Mostly)
-- [ ] Cave TileSet(Variety Floors, Chasms, Walls, Decorations) 
-- [ ] Kingdom TileSet (Buildings, Castle Room Stuff, Paths, Grasses, etc)
-- [ ] Wizard Boss
-- [ ] Naga Boss
-- [ ] Final Boss
-- [ ] Naga Lair TileSet
-- [ ] Garden Maze TileSet
-- [ ] Extra Stuff(Detailed Later)
-- [ ] Human Kingdom Inhabitants
-- [ ] Dwarf Kingdom Inhabitants
-
-## Programming
-- [ ] Book and Equation Builder
-- [ ] Starting Level Code
-- [ ] NPC Interactions
-- [ ] Level 1 Code
-- [ ] City Maze(Water Bucket and Fire interactions)
-- [ ] After Level Well Unlock
-- [ ] Level 2 Code
-- [ ] Garden Puzzle
-- [ ] Naga Boss
-- [ ] Level 3 Code
-- [ ] Final Boss
-- [ ] Title Screen
-
-## Scene Construction(Good Indicator of Overall Progress)
-- [ ] TileSet Scenes
-- [ ] Starting Level
-- [ ] Level 1 
-- [ ] Level 2
-- [ ] Level 3
-- [ ] Title Screen
-
+# The Math Magician 
+## Description
+In The Math Magician, due to a mysterious disappearance of the world’s understanding of mathematics, chaos, destruction, and discord encompassed the world. Luckily, a Math Magician, an expert in the old ways of mathematics has remained unaffected by the phenomena and is the last hope to restore peace and math to the world. The game follows the adventures of the magicians as they relearn math topics and operations to help clean up the mess caused by the chaos and return the world to the state it once was. The game’s target audience is E for everyone.
